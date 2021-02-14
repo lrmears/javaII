@@ -13,13 +13,22 @@ package triptypes;
 public abstract class VacationPackage 
 {
 	/**
+	 * Promotional marketing name used for this package.
+	 */
+	private String packageName;
+	/**
+	 * The number of days included in this VacationPackage trip.
+	 */
+	private int tripLength;
+	/**
 	 * Initializes a VacationPackage with provided values.
 	 * @param name - The promotional marketing name for this package.
 	 * @param numDays - The number of days included in this VacationPackage trip.
 	 */
 	public VacationPackage(String name, int numDays)
 	{
-		
+		this.packageName = name;
+		this.tripLength = numDays;
 	}
 	
 	/**
@@ -31,7 +40,14 @@ public abstract class VacationPackage
 	 */
 	public void setName(String name)
 	{
-		
+		if (!name.equals(""))
+		{
+			this.packageName = name;
+		}
+		else
+		{
+			this.packageName = "PACKAGE NAME TBD";
+		}
 	}
 	
 	/**
@@ -40,7 +56,10 @@ public abstract class VacationPackage
 	 */
 	public void setLength(int numDays)
 	{
-		
+		if (numDays > 0)
+		{
+			this.tripLength = numDays;
+		}
 	}
 	
 	/**
@@ -49,7 +68,7 @@ public abstract class VacationPackage
 	 */
 	public String getName()
 	{
-		return "";
+		return this.packageName;
 	}
 	
 	/**
@@ -58,11 +77,11 @@ public abstract class VacationPackage
 	 */
 	public int getNumDays()
 	{
-		return 0;
+		return this.tripLength;
 	}
 	
 	/**
-	 * This method provides the full price of a vacation package, which is must be computed based on the
+	 * This method provides the full price of a vacation package, which must be computed based on the
 	 * specific kind of trip being booked.
 	 * @return The price of a vacation package in US Dollars.
 	 */
