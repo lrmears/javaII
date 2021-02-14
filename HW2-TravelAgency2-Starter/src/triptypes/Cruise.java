@@ -47,7 +47,8 @@ public class Cruise extends FlightOptionalPackage
 	}
 	
 	/**
-	 * Retrieves an array containing all of the excursions which have been added to this Cruise, in the order in which they were added.
+	 * Retrieves an array containing all of the excursions which have been added to this Cruise, in the
+	 * order in which they were added.
 	 * @return The list of excursions.
 	 */
 	public String[] getExcursion()
@@ -152,7 +153,7 @@ public class Cruise extends FlightOptionalPackage
 	
 	/**
 	 * Retrieves the lodging charge for this Cruise package, calculated from the base price scaled
-	 * based on the cabin level according to the following fee schedule:
+	 * based on the cabin level according to the following fee schedule:.
 	 * Interior Room:     100% of base price
 	 * Ocean View Room:   150% of base price
 	 * Balcony Room:      300% of base price

@@ -12,7 +12,8 @@ package triptypes;
  * all-inclusive packages are billed using a flat fee, regardless of the number of included amenities.
  * @author lmears, jsand
  */
-public class AllInclusiveResort extends FlightOptionalPackage{
+public class AllInclusiveResort extends FlightOptionalPackage
+{
 
 	/**
 	 * Creates a new AllInclusiveResort package.

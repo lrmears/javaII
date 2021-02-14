@@ -12,7 +12,8 @@ package triptypes;
  * captured in a concrete subclass of FlightOptionalPackage.
  * @author lmears, jsand
  */
-public abstract class FlightOptionalPackage extends VacationPackage{
+public abstract class FlightOptionalPackage extends VacationPackage
+{
 	
 	/**
 	 * Initializes details for a newly created FlightOptionalPackage. Upon creation,

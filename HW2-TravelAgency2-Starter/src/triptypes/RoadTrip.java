@@ -10,7 +10,8 @@ package triptypes;
  * This class represents a RoadTrip vacation that includes a rental car, overnight lodging, and fuel cost estimation.
  * @author lmears, jsand
  */
-public class RoadTrip extends VacationPackage{
+public class RoadTrip extends VacationPackage
+{
 
 	/**
 	 * Creates a newly initialized RoadTrip object using the parameter data.
