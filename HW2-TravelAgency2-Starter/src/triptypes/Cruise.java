@@ -15,6 +15,30 @@ import java.util.Calendar;
  */
 public class Cruise extends FlightOptionalPackage
 {
+	/**
+	 * Type of cabin for this cruise.
+	 */
+	private CabinType cabinType;
+	/**
+	 * The ship name for this cruise.
+	 */
+	private String shipName;
+	/**
+	 * The departure port for this cruise.
+	 */
+	private String departPort;
+	/**
+	 * The time and date of departure from the port.
+	 */
+	private Calendar departDate;
+	/**
+	 * The time and date of return to the port.
+	 */
+	private Calendar returnDate;
+	/**
+	 * The base price for the cheapest tier cabin (interior) on the ship.
+	 */
+	private double baseCabinPrice;
 
 	/**
 	 * Creates a new Cruise trip with specified values for all data except optional excursions.
@@ -31,6 +55,11 @@ public class Cruise extends FlightOptionalPackage
 			double basePrice)
 	{
 		super(name, numDays);
+		this.shipName = vesselName;
+		this.departPort = portCity;
+		this.departDate = departs;
+		this.returnDate = returns;
+		this.baseCabinPrice = basePrice;
 	}
 	
 	/**
@@ -63,7 +92,7 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public void setCabinType(CabinType cabin)
 	{
-		
+		this.cabinType = cabin;
 	}
 	
 	/**
@@ -72,7 +101,7 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public CabinType getCabinType()
 	{
-		return CabinType.BALCONY;
+		return this.cabinType;
 	}
 	
 	/**
@@ -81,7 +110,7 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public String getHomePort()
 	{
-		return "";
+		return this.departPort;
 	}
 	
 	/**
@@ -90,7 +119,7 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public Calendar getDepartureDate()
 	{
-		return null;
+		return this.departDate;
 	}
 	
 	/**
@@ -99,7 +128,7 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public Calendar getReturnDate()
 	{
-		return null;
+		return this.returnDate;
 	}
 	
 	/**
@@ -108,7 +137,7 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public String getVesselName()
 	{
-		return "";
+		return this.shipName;
 	}
 	
 	/**
