@@ -1,9 +1,14 @@
+// COURSE: CSCI1620
+// TERM: Spring 2021
+//
+// NAME: Logan Mears, Jacob Sand
+// RESOURCES: I used not external resources in creating this class.
+
 package triptypes;
 
 /**
  * This enum presents the four cabin types on standard cruise ships.
- * @author lmears
- *
+ * @author lmears, jsand
  */
 public enum CabinType
 {

@@ -1,3 +1,9 @@
+// COURSE: CSCI1620
+// TERM: Spring 2021
+//
+// NAME: Logan Mears, Jacob Sand
+// RESOURCES: I used not external resources in creating this class.
+
 package triptypes;
 import java.util.Calendar;
 
@@ -5,8 +11,7 @@ import java.util.Calendar;
  * This class represents a cruise package within the travel agency. It stores required information
  * about the cruise ship, including departure and arrival times. It allows for optional off-ship excursion
  * packages to be added to a trip for an additional price.
- * @author lmears
- *
+ * @author lmears, jsand
  */
 public class Cruise extends FlightOptionalPackage
 {

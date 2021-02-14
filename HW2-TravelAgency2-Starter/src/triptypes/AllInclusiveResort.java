@@ -1,11 +1,16 @@
+// COURSE: CSCI1620
+// TERM: Spring 2021
+//
+// NAME: Logan Mears, Jacob Sand
+// RESOURCES: I used not external resources in creating this class.
+
 package triptypes;
 
 /**
  * This class encapsulates details related to an all-inclusive resort vacation package. Flight
  * information to/from the resort location can be added an additional price. Once at the resort,
  * all-inclusive packages are billed using a flat fee, regardless of the number of included amenities.
- * @author lmears
- *
+ * @author lmears, jsand
  */
 public class AllInclusiveResort extends FlightOptionalPackage{
 

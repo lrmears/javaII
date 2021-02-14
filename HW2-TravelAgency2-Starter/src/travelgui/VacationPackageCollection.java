@@ -1,7 +1,7 @@
 // COURSE: CSCI1620
-// TERM: Spring 2019
+// TERM: Spring 2021
 //
-// NAME: Dr. Dorn
+// NAME: Logan Mears, Jacob Sand
 // RESOURCES: I used not external resources in creating this class.
 
 package travelgui;
@@ -11,8 +11,7 @@ import triptypes.VacationPackage;
 /**
  * This class serves as a collection to store, filter, and explore VacationPackages within the trip
  * search user interface. Up to 25 VacationPackages can be stored in a single collection.
- * @author lmears
- *
+ * @author lmears, jsand
  */
 public class VacationPackageCollection
 {

@@ -1,9 +1,14 @@
+// COURSE: CSCI1620
+// TERM: Spring 2021
+//
+// NAME: Logan Mears, Jacob Sand
+// RESOURCES: I used not external resources in creating this class.
+
 package triptypes;
 
 /**
  * This class represents a RoadTrip vacation that includes a rental car, overnight lodging, and fuel cost estimation.
- * @author lmears
- *
+ * @author lmears, jsand
  */
 public class RoadTrip extends VacationPackage{
 
