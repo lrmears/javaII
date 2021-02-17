@@ -3,7 +3,6 @@
 //
 // NAME: Logan Mears, Jacob Sand
 // RESOURCES: I used not external resources in creating this class.
-// TEST TESSSSSSST
 
 package triptypes;
 
@@ -15,6 +14,22 @@ package triptypes;
  */
 public class AllInclusiveResort extends FlightOptionalPackage
 {
+	/**
+	 * The name of the resort.
+	 */
+	private String resortName;
+	/**
+	 * The number of guests allowed per room at the included price.
+	 */
+	private int numGuestsPerRoom;
+	/**
+	 * The price of the stay per night.
+	 */
+	private double priceEachNight;
+	/**
+	 * A list of amenities available for free at the resort.
+	 */
+	private String[] amenities;
 
 	/**
 	 * Creates a new AllInclusiveResort package.
@@ -29,6 +44,10 @@ public class AllInclusiveResort extends FlightOptionalPackage
 			String[] amenitiesList)
 	{
 		super(name, numDays);
+		this.resortName = resort;
+		this.numGuestsPerRoom = guestsPerRoom;
+		this.priceEachNight = pricePerNight;
+		this.amenities = amenitiesList;
 	}
 	
 	/**
@@ -39,7 +58,12 @@ public class AllInclusiveResort extends FlightOptionalPackage
 	 */
 	public String getAmenities()
 	{
-		return "";
+		String outputString = "";
+		for (String amenity : amenities)
+		{
+			outputString += amenity;
+		}
+		return outputString;
 	}
 	
 	/**
@@ -48,7 +72,7 @@ public class AllInclusiveResort extends FlightOptionalPackage
 	 */
 	public int getGuestsPerRoom()
 	{
-		return 0;
+		return this.numGuestsPerRoom;
 	}
 	
 	/**
