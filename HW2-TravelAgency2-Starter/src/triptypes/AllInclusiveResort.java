@@ -3,7 +3,7 @@
 //
 // NAME: Logan Mears, Jacob Sand
 // RESOURCES: I used not external resources in creating this class.
-// TEST
+// TEST TESSSSSSST
 
 package triptypes;
 
