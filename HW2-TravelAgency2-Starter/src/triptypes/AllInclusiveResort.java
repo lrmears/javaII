@@ -59,9 +59,15 @@ public class AllInclusiveResort extends FlightOptionalPackage
 	public String getAmenities()
 	{
 		String outputString = "";
+		// Loops through the array
 		for (String amenity : amenities)
 		{
 			outputString += amenity;
+			// Checks if item is not the last element in the array
+			if (amenity != amenities[amenities.length - 1])
+			{
+				outputString += ", ";
+			}
 		}
 		return outputString;
 	}
