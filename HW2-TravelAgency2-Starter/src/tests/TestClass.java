@@ -8,6 +8,10 @@ package tests;
 
 import triptypes.*;
 
+/**
+ * Use this class to test methods.
+ * @author lmears, jsand
+ */
 public class TestClass 
 {
 	public static void main(String[] args)
