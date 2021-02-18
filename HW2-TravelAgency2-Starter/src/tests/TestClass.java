@@ -20,5 +20,11 @@ public class TestClass
 		AllInclusiveResort test = new AllInclusiveResort("name", 5, "resort", 3, 55.75, amen);
 		System.out.println(test.getAmenities());
 		
+		String[] stops = {"omaha", "iowa", "hawaii"};
+		// RoadTrip(name, numDays, stops, fuelCost, miles, maxPersons, hotelStars)
+		RoadTrip road = new RoadTrip("Road Trip", 3, stops, 1.7, 1700, 4, 5);
+		System.out.println(road.getFuelPrice());
+		System.out.println(road.getStops());
+		System.out.println(road.toString());
 	}
 }

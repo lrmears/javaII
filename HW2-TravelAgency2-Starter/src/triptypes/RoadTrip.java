@@ -12,7 +12,28 @@ package triptypes;
  */
 public class RoadTrip extends VacationPackage
 {
-
+	/**
+	 * A list of destinations that will be visited along the way on this RoadTrip.
+	 */
+	private String[] stopsList;
+	/**
+	 * The estimated cost of fuel in US Dollars per Gallon based on current rates.
+	 */
+	private double fuelPrice;
+	/**
+	 * The total number of miles for this RoadTrip, assuming people follow the intended route.
+	 */
+	private int totalMiles;
+	/**
+	 * The number of people for whom this trip package will be budgeted.
+	 */
+	private int maxNumPersons;
+	/**
+	 * The quality level of the hotels used during the RoadTrip, ranging from 1..5
+	 * stars, inclusive. Star values outside this range will be adjusted to the closest valid value.
+	 */
+	private int hotelRating;
+	
 	/**
 	 * Creates a newly initialized RoadTrip object using the parameter data.
 	 * @param name - The promotional name to use for this RoadTrip in the travel agency system.
@@ -28,6 +49,11 @@ public class RoadTrip extends VacationPackage
 			int hotelStars)
 	{
 		super(name, numDays);
+		this.stopsList = stops;
+		this.fuelPrice = fuelCost;
+		this.totalMiles = miles;
+		this.maxNumPersons = maxPersons;
+		this.hotelRating = hotelStars;
 	}
 	
 	/**
@@ -36,7 +62,7 @@ public class RoadTrip extends VacationPackage
 	 */
 	public int getHotelStars()
 	{
-		return 0;
+		return this.hotelRating;
 	}
 	
 	/**
@@ -104,7 +130,7 @@ public class RoadTrip extends VacationPackage
 	 */
 	public int getNumStops()
 	{
-		return 0;
+		return stopsList.length;
 	}
 	
 	/**
@@ -113,7 +139,7 @@ public class RoadTrip extends VacationPackage
 	 */
 	public void setPersons(int maxPeople)
 	{
-		
+		maxNumPersons = maxPeople;
 	}
 	
 	/**
@@ -122,7 +148,7 @@ public class RoadTrip extends VacationPackage
 	 */
 	public int getNumPersons()
 	{
-		return 0;
+		return maxNumPersons;
 	}
 	
 	/**
@@ -133,7 +159,14 @@ public class RoadTrip extends VacationPackage
 	 */
 	public void setFuelPrice(double pricePerGallon)
 	{
-		
+		if (pricePerGallon > 0)
+		{
+			fuelPrice = pricePerGallon;
+		}
+		else
+		{
+			fuelPrice = 2.5;
+		}
 	}
 	
 	/**
@@ -142,7 +175,7 @@ public class RoadTrip extends VacationPackage
 	 */
 	public double getFuelPrice()
 	{
-		return 0.0;
+		return fuelPrice;
 	}
 	
 	/**
@@ -169,7 +202,18 @@ public class RoadTrip extends VacationPackage
 	 */
 	public String getStops()
 	{
-		return "";
+		String outputString = "";
+		// Loops through the array
+		for (String stop : stopsList)
+		{
+			outputString += stop;
+			// Checks if item is not the last element in the array
+			if (stop != stopsList[stopsList.length - 1])
+			{
+				outputString += ", "; 
+			}
+		}
+		return outputString;
 	}
 	
 	/**
@@ -184,6 +228,7 @@ public class RoadTrip extends VacationPackage
 	@Override
 	public String toString()
 	{
-		return "";
+		return String.format("$%8.2f  %s\n%36s %s",
+				this.getPrice(), this.getName(), "A road trip with stops at", this.getStops());
 	}
 }
