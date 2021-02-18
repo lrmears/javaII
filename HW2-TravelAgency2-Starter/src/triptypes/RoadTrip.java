@@ -33,6 +33,14 @@ public class RoadTrip extends VacationPackage
 	 * stars, inclusive. Star values outside this range will be adjusted to the closest valid value.
 	 */
 	private int hotelRating;
+	/**
+	 * Default fuel price.
+	 */
+	private final double defaultFuelPrice = 2.5;
+	/**
+	 * Base room cost per night for lodging.
+	 */
+	private final double baseRoomCost = 32.5;
 	
 	/**
 	 * Creates a newly initialized RoadTrip object using the parameter data.
@@ -105,7 +113,8 @@ public class RoadTrip extends VacationPackage
 	 */
 	public double getLodgingCost()
 	{
-		return 0.0;
+		return baseRoomCost * this.getHotelStars() * (this.getNumDays() - 1) 
+				* Math.ceil(this.getNumPersons() / 2.0);
 	}
 	
 	/**
@@ -165,7 +174,7 @@ public class RoadTrip extends VacationPackage
 		}
 		else
 		{
-			fuelPrice = 2.5;
+			fuelPrice = defaultFuelPrice;
 		}
 	}
 	
@@ -192,7 +201,28 @@ public class RoadTrip extends VacationPackage
 	 */
 	public double getEstimatedFuelCost()
 	{
-		return 0.0;
+		double price = 0;
+		if (this.getNumPersons() >= 1 && this.getNumPersons() <= 2)
+		{
+			price = (totalMiles / 45.0) * this.getFuelPrice();
+		}
+		else if (this.getNumPersons() >= 3 && this.getNumPersons() <= 4)
+		{
+			price = (totalMiles / 32.0) * this.getFuelPrice();
+		}
+		else if (this.getNumPersons() >= 5 && this.getNumPersons() <= 6)
+		{
+			price = (totalMiles / 28.0) * this.getFuelPrice();
+		}
+		else if (this.getNumPersons() >= 7 && this.getNumPersons() <= 8)
+		{
+			price = (totalMiles / 22.0) * this.getFuelPrice();
+		}
+		else if (this.getNumPersons() >= 9)
+		{
+			price = (totalMiles / 15.0) * this.getFuelPrice();
+		}
+		return price;
 	}
 	
 	/**
