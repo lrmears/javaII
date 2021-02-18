@@ -13,7 +13,34 @@ import java.util.Calendar;
  */
 public class Flight
 {
-
+	/**
+	 * Different airline options.
+	 */
+	private String airlineOptions;	
+	/**
+	 * flightNumber is just the holder for different flight numbers.
+	 */
+	private int flightNumber;
+	/**
+	 * sourcePoint is the holder for the airport code.
+	 */
+	private String sourcePoint;
+	/**
+	 * endPoint is the holder for the flying to airport code.
+	 */
+	private String endPoint;
+	/**
+	 * departTime local holder for the departure time from the airport. 
+	 */
+	private Calendar departTime;
+	/**
+	 * arrivalTime is the local holder for the expected arrival time at the airport.
+	 */
+	private Calendar arrivalTime;
+	/**
+	 * costFlight is the local holder for the price.
+	 */
+	private double costFlight;
 	/**
 	 * Creates a new flight leg in the system.
 	 * @param airline - The two letter airline code (e.g, "DL", "AA")
@@ -27,16 +54,22 @@ public class Flight
 	public Flight(String airline, int flightNum, String from, String to, Calendar leavesAt, Calendar arrives,
 			double price)
 	{
-		
+		this.airlineOptions = airline;
+		this.flightNumber = flightNum;
+		this.sourcePoint = from;
+		this.endPoint = to;
+		this.departTime = leavesAt;
+		this.arrivalTime = arrives;
+		this.costFlight = price;
 	}
-	
+	 
 	/**
 	 * Retrieves the price of this flight.
 	 * @return The price in US Dollars.
 	 */
 	public double getPrice()
 	{
-		return 0.0;
+		return costFlight;
 	}
 	
 	/**
@@ -52,6 +85,8 @@ public class Flight
 	@Override
 	public String toString()
 	{
-		return "";
+		return String.format("%s %d Departs:", this.airlineOptions, this.flightNumber, 
+				"%s at %s;", this.sourcePoint, this.departTime,
+				"Arrives %s at %s", this.endPoint, this.arrivalTime);
 	}
 }
