@@ -72,7 +72,30 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public void addExcursion(String excursion, double price)
 	{
-		
+		excursion = null;
+		price = 0;
+		/**
+		 * Give a default for the variable so i can test it in the if statements.
+		 */
+		if (excursion == null)
+		{
+			
+		}
+		else 
+		{
+			
+		}
+		/**
+		 * Test the price values.
+		 */
+		if (price >= 0)
+		{
+			
+		}
+		else 
+		{
+			
+		}
 	}
 	
 	/**
@@ -82,6 +105,7 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public String[] getExcursion()
 	{
+		
 		return new String[0];
 	}
 	
@@ -155,7 +179,13 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public int getNumExcursions()
 	{
-		return 0;
+		int counter = 0;
+		for (int i = 0; i < this.excursionArray; i ++) // code in development
+			if (this.excursionArray[i] != null)
+			{
+				counter ++;
+			}
+		return counter;
 	}
 	
 	/**
