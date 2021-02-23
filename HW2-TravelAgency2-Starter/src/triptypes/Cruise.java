@@ -6,6 +6,7 @@
 
 package triptypes;
 import java.util.Calendar;
+import java.util.ArrayList;
 
 /**
  * This class represents a cruise package within the travel agency. It stores required information
@@ -15,6 +16,14 @@ import java.util.Calendar;
  */
 public class Cruise extends FlightOptionalPackage
 {
+	/**
+	 * Maximum amount of excursions allowed.
+	 */
+	private static final int MAX_EXC = 10;
+	/**
+	 * Ocean multiplier for lodging.
+	 */
+	private static final double OCEAN_MULT = 1.5;
 	/**
 	 * Type of cabin for this cruise.
 	 */
@@ -39,6 +48,24 @@ public class Cruise extends FlightOptionalPackage
 	 * The base price for the cheapest tier cabin (interior) on the ship.
 	 */
 	private double baseCabinPrice;
+	
+	// EXCURSION VARIABLES
+	/**
+	 * List of excursions.
+	 */
+	private ArrayList<String> excursions = new ArrayList<String>();
+	/**
+	 * Number of excursions.
+	 */
+	private int counter = 0;
+	/**
+	 * Stores the excursion cost.
+	 */
+	private double excCost = 0;
+	/**
+	 * Stores total excursion cost.
+	 */
+	private double excTotal = 0;
 
 	/**
 	 * Creates a new Cruise trip with specified values for all data except optional excursions.
@@ -55,6 +82,7 @@ public class Cruise extends FlightOptionalPackage
 			double basePrice)
 	{
 		super(name, numDays);
+		setCabinType(CabinType.INTERIOR);
 		this.shipName = vesselName;
 		this.departPort = portCity;
 		this.departDate = departs;
@@ -72,29 +100,22 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public void addExcursion(String excursion, double price)
 	{
-		excursion = null;
-		price = 0;
-		/**
-		 * Give a default for the variable so i can test it in the if statements.
-		 */
-		if (excursion == null)
+		if (excursion != null && !excursion.equals("") && counter < 10)
 		{
+			// Adds excursion to the array list
+			excursions.add(excursion);
 			
-		}
-		else 
-		{
+			if (price >= 0)
+			{
+				excCost = price;
+			}
+			else
+			{
+				excCost = 0.0;
+			}
 			
-		}
-		/**
-		 * Test the price values.
-		 */
-		if (price >= 0)
-		{
-			
-		}
-		else 
-		{
-			
+			excTotal += excCost;
+			counter++;
 		}
 	}
 	
@@ -105,8 +126,8 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public String[] getExcursion()
 	{
-		
-		return new String[0];
+		String[] listExcursions = excursions.toArray(new String[MAX_EXC]);
+		return listExcursions;
 	}
 	
 	/**
@@ -170,7 +191,7 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public double getExcursionCosts()
 	{
-		return 0.0;
+		return excTotal;
 	}
 	
 	/**
@@ -179,13 +200,16 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public int getNumExcursions()
 	{
-		int counter = 0;
-		for (int i = 0; i < this.excursionArray; i ++) // code in development
-			if (this.excursionArray[i] != null)
+		String[] copyExc = this.getExcursion();
+		int count = 0;
+		for (int i = 0; i < copyExc.length; i++)
+		{
+			if (copyExc[i] != null && !copyExc[i].equals(""))
 			{
-				counter ++;
+				count++;
 			}
-		return counter;
+		}
+		return count;
 	}
 	
 	/**
@@ -195,7 +219,7 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public double getPrice()
 	{
-		return 0.0;
+		return this.getFlightCosts() + this.getLodgingCost() + this.getExcursionCosts();
 	}
 	
 	/**
@@ -207,7 +231,7 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public double getDepositAmount()
 	{
-		return 0.0;
+		return this.getFlightCosts() + (this.getLodgingCost() / 2);
 	}
 	
 	/**
@@ -221,7 +245,20 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public double getLodgingCost()
 	{
-		return 0.0;
+		double cost = this.baseCabinPrice;
+		if (this.getCabinType() == CabinType.OCEAN_VIEW)
+		{
+			cost = this.baseCabinPrice * OCEAN_MULT;
+		}
+		else if (this.getCabinType() == CabinType.BALCONY)
+		{
+			cost = this.baseCabinPrice * 3;
+		}
+		else if (this.getCabinType() == CabinType.SUITE)
+		{
+			cost = this.baseCabinPrice * 5;
+		}
+		return cost;
 	}
 	
 	/**
@@ -240,6 +277,18 @@ public class Cruise extends FlightOptionalPackage
 	@Override
 	public String toString()
 	{
-		return "";
+		String summary = super.toString();
+		
+		if (getNumExcursions() > 0)
+		{
+			summary +=  String.format("\n           %s %s on the %s (includes %d excursions)", 
+					"Cruising from", this.departPort, this.shipName, excursions.size());
+		}
+		else
+		{
+			summary +=  String.format("\n           %s %s on the %s", 
+					"Cruising from", this.departPort, this.shipName);
+		}
+		return summary;
 	}
 }
