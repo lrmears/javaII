@@ -27,8 +27,8 @@ public abstract class VacationPackage
 	 */
 	public VacationPackage(String name, int numDays)
 	{
-		this.packageName = name;
-		this.tripLength = numDays;
+		setName(name);
+		setLength(numDays);
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public abstract class VacationPackage
 	 */
 	public void setName(String name)
 	{
-		if (!name.equals(""))
+		if (!name.equals("") && name != null)
 		{
 			this.packageName = name;
 		}
@@ -59,6 +59,10 @@ public abstract class VacationPackage
 		if (numDays > 0)
 		{
 			this.tripLength = numDays;
+		}
+		else
+		{
+			this.tripLength = 1;
 		}
 	}
 	
@@ -101,7 +105,7 @@ public abstract class VacationPackage
 	 */
 	public double getAmountDue()
 	{
-		return 0.0;
+		return this.getPrice() - this.getDepositAmount();
 	}
 	
 	/**
@@ -124,7 +128,7 @@ public abstract class VacationPackage
 	@Override
 	public String toString()
 	{
-		return "";
+		return String.format("$%8.2f  %s", this.getPrice(), this.packageName);
 	}
 	
 	/**
@@ -136,6 +140,13 @@ public abstract class VacationPackage
 	@Override
 	public boolean equals(Object other)
 	{
-		return true;
+		boolean result = false;
+		
+		if (other instanceof VacationPackage
+				&& ((VacationPackage) other).getName().equals(this.packageName))
+		{
+			result = true;
+		}
+		return result;
 	}
 }
