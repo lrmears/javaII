@@ -18,11 +18,29 @@ import triptypes.FlightOptionalPackage;
 public class VacationPackageCollection
 {
 	/**
+	 * Maximum number of vacation packages allowed.
+	 */
+	private static final int MAX_PACK = 25;
+	/**
+	 * Maximum number of flights allowed.
+	 */
+	private static final int MAX_FLIGHTS = 12;
+	/**
+	 * Stores the vacation array.
+	 */
+	private VacationPackage[] vacation;
+	/**
+	 * Number of trips.
+	 */
+	private int trips;
+	
+	/**
 	 * Creates a new empty VacationPackageCollection.
 	 */
 	public VacationPackageCollection()
 	{
-		
+		vacation = new VacationPackage[MAX_PACK];
+		this.trips = 0;
 	}
 	
 	/**
@@ -31,7 +49,7 @@ public class VacationPackageCollection
 	 */
 	public int getNumTrips()
 	{
-		return 0;
+		return this.trips;
 	}
 	
 	/**
@@ -43,7 +61,7 @@ public class VacationPackageCollection
 	 */
 	public VacationPackage[] getAllVacations()
 	{
-		return null;
+		return vacation;
 	}
 	
 	/**
@@ -53,7 +71,15 @@ public class VacationPackageCollection
 	 */
 	public void addVacation(VacationPackage trip)
 	{
-		
+		for (int i = 0; i < vacation.length; i++)
+		{
+			if (vacation[i] == null)
+			{
+				vacation[i] = trip;
+				this.trips++;
+				break;
+			}
+		}
 	}
 	
 	/**
@@ -96,7 +122,14 @@ public class VacationPackageCollection
 	 */
 	public VacationPackage getItemAt(int index)
 	{
-		return null;
+		if (index >= 0)
+		{
+			return vacation[index];
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	/**
