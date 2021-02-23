@@ -7,6 +7,8 @@
 package travelgui;
 
 import triptypes.VacationPackage;
+import triptypes.Flight;
+import triptypes.FlightOptionalPackage;
 
 /**
  * This class serves as a collection to store, filter, and explore VacationPackages within the trip

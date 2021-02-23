@@ -347,9 +347,9 @@ public class RoadTrip extends VacationPackage
 	@Override
 	public String toString()
 	{
-		String summary = super.toString();
-		summary += String.format("\n           %s %s", "A road trip with stops at", this.getStops());
+		String outputString = super.toString();
+		outputString += String.format("\n           %s %s", "A road trip with stops at", this.getStops());
 		
-		return summary;
+		return outputString;
 	}
 }

@@ -277,18 +277,18 @@ public class Cruise extends FlightOptionalPackage
 	@Override
 	public String toString()
 	{
-		String summary = super.toString();
+		String outputString = super.toString();
 		
 		if (getNumExcursions() > 0)
 		{
-			summary +=  String.format("\n           %s %s on the %s (includes %d excursions)", 
+			outputString +=  String.format("\n           %s %s on the %s (includes %d excursions)", 
 					"Cruising from", this.departPort, this.shipName, excursions.size());
 		}
 		else
 		{
-			summary +=  String.format("\n           %s %s on the %s", 
+			outputString +=  String.format("\n           %s %s on the %s", 
 					"Cruising from", this.departPort, this.shipName);
 		}
-		return summary;
+		return outputString;
 	}
 }

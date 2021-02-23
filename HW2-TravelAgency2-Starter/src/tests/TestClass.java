@@ -6,6 +6,8 @@
 
 package tests;
 
+import java.util.Calendar;
+
 import triptypes.*;
 
 /**
@@ -29,6 +31,10 @@ public class TestClass
 		System.out.println(road.getStops());
 		System.out.println(road.toString());
 		System.out.println(road.getLodgingCost());
+		
+		// Testing for Flight
+		// Flight(airline, flightNum, from, to, leavesAt, arrives, price)
+		Flight testFlight = new Flight("Dumb Airlines", 69, null, null, null, null, 0);
 		
 	}
 }

@@ -30,6 +30,10 @@ public class AllInclusiveResort extends FlightOptionalPackage
 	 * A list of amenities available for free at the resort.
 	 */
 	private String[] amenities;
+	/**
+	 * Days included in the vacation package.
+	 */
+	private int daysIncluded;
 
 	/**
 	 * Creates a new AllInclusiveResort package.
@@ -44,6 +48,7 @@ public class AllInclusiveResort extends FlightOptionalPackage
 			String[] amenitiesList)
 	{
 		super(name, numDays);
+		this.daysIncluded = numDays;
 		this.resortName = resort;
 		this.numGuestsPerRoom = guestsPerRoom;
 		this.priceEachNight = pricePerNight;
@@ -87,7 +92,7 @@ public class AllInclusiveResort extends FlightOptionalPackage
 	 */
 	public double getPrice()
 	{
-		return 0.0;
+		return this.getFlightCosts() + this.getLodgingCost();
 	}
 	
 	/**
@@ -97,7 +102,17 @@ public class AllInclusiveResort extends FlightOptionalPackage
 	 */
 	public double getDepositAmount()
 	{
-		return 0.0;
+		return this.getFlightCosts() + (this.getLodgingCost() / 2);
+	}
+	
+	/**
+	 * Retrieves the sub-total for lodging associated with this all inclusive resort stay based on the
+	 * number of nights in the package and the base price.
+	 * @return The lodging subtotal in US Dollars.
+	 */
+	public double getLodgingCost()
+	{
+		return priceEachNight * (daysIncluded - 1);
 	}
 	
 	/**
@@ -110,16 +125,11 @@ public class AllInclusiveResort extends FlightOptionalPackage
 	@Override
 	public String toString()
 	{
-		return "";
-	}
-	
-	/**
-	 * Retrieves the sub-total for lodging associated with this all inclusive resort stay based on the
-	 * number of nights in the package and the base price.
-	 * @return The lodging subtotal in US Dollars.
-	 */
-	public double getLodgingCost()
-	{
-		return 0.0;
+		String outputString = super.toString();
+		
+		outputString +=  String.format("\n           %s %s for %d people!", "An all-inclusive stay at", 
+				this.resortName, this.numGuestsPerRoom);
+		
+		return outputString;
 	}
 }

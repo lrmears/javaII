@@ -117,16 +117,16 @@ public abstract class FlightOptionalPackage extends VacationPackage
 	@Override
 	public String toString()
 	{
-		String summary;
+		String outputString;
 		if (this.hasFlights())
 		{
-			summary = super.toString() + " (Flight Included)";
+			outputString = super.toString() + " (Flight Included)";
 		}
 		else
 		{
-			summary = super.toString() + " (Flight Not Included)";
+			outputString = super.toString() + " (Flight Not Included)";
 		}
-		return summary;
+		return outputString;
 	}
 
 }
