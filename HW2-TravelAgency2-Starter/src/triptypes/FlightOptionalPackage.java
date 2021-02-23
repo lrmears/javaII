@@ -5,6 +5,7 @@
 // RESOURCES: I used not external resources in creating this class.
 
 package triptypes;
+import java.util.ArrayList;
 
 /**
  * This class encapsulates information about travel packages that can include optional flight arrangements.
@@ -14,6 +15,18 @@ package triptypes;
  */
 public abstract class FlightOptionalPackage extends VacationPackage
 {
+	/**
+	 * Maximum number of flights allowed.
+	 */
+	public static final int FLIGHT_MAX = 12;
+	/**
+	 * Counts flight legs.
+	 */
+	private int count = 0;
+	/**
+	 * Array list to store flight legs.
+	 */
+	private ArrayList<Flight> leg = new ArrayList<Flight>(FLIGHT_MAX);
 	
 	/**
 	 * Initializes details for a newly created FlightOptionalPackage. Upon creation,
@@ -36,7 +49,11 @@ public abstract class FlightOptionalPackage extends VacationPackage
 	 */
 	public void addFlightLeg(Flight details)
 	{
-		
+		if (count < FLIGHT_MAX && details != null)
+		{
+			leg.add(details);
+			count++;
+		}
 	}
 	
 	/**
@@ -45,7 +62,16 @@ public abstract class FlightOptionalPackage extends VacationPackage
 	 */
 	public boolean hasFlights()
 	{
-		return true;
+		boolean result = false;
+		for (int i = 0; i < leg.size(); i++)
+		{
+			if (leg.get(i) != null)
+			{
+				result = true;
+				break;
+			}
+		}
+		return result;
 	}
 	
 	/**
@@ -55,7 +81,15 @@ public abstract class FlightOptionalPackage extends VacationPackage
 	 */
 	public Flight[] getFlightItinerary()
 	{
-		return new Flight[0];
+		if (this.hasFlights())
+		{
+			Flight[] copy = leg.toArray(new Flight[FLIGHT_MAX]);
+			return copy;
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	/**
@@ -64,7 +98,12 @@ public abstract class FlightOptionalPackage extends VacationPackage
 	 */
 	public double getFlightCosts()
 	{
-		return 0.0;
+		double costs = 0;
+		for (int i = 0; i < leg.size(); i++)
+		{
+			costs += (leg.get(i)).getPrice();
+		}
+		return costs;
 	}
 	
 	/**
@@ -78,7 +117,16 @@ public abstract class FlightOptionalPackage extends VacationPackage
 	@Override
 	public String toString()
 	{
-		return "";
+		String summary;
+		if (this.hasFlights())
+		{
+			summary = super.toString() + " (Flight Included)";
+		}
+		else
+		{
+			summary = super.toString() + " (Flight Not Included)";
+		}
+		return summary;
 	}
 
 }
