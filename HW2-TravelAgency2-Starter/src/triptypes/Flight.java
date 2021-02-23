@@ -6,6 +6,7 @@
 
 package triptypes;
 import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 /**
  * This class represents a single flight within the travel agency system.
@@ -85,8 +86,9 @@ public class Flight
 	@Override
 	public String toString()
 	{
-		return String.format("%s %d Departs:", this.airlineOptions, this.flightNumber, 
-				"%s at %s;", this.sourcePoint, this.departTime,
-				"Arrives %s at %s", this.endPoint, this.arrivalTime);
+		SimpleDateFormat formatted = new SimpleDateFormat("HH:mm MM-dd-yyyy");
+		return String.format("%s%4d Departs: ", this.airlineOptions, this.flightNumber, 
+				"%s at %s; ", this.sourcePoint, formatted.format(this.departTime.getTime()),
+				"Arrives %s at %s", this.endPoint, formatted.format(this.arrivalTime.getTime()));
 	}
 }
