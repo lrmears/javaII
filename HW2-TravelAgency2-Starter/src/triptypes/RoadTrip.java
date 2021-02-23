@@ -12,6 +12,61 @@ package triptypes;
  */
 public class RoadTrip extends VacationPackage
 {
+	// STATIC INSTANCE VARIABLES
+	/**
+	 * Default fuel price.
+	 */
+	private static final double BASE_FUEL_COST = 2.5;
+	/**
+	 * Base room cost per night for lodging.
+	 */
+	private static final double BASE_ROOM_COST = 32.5;
+	
+	// FUEL EFFICIENCY FINAL VARIABLES
+	/**
+	 * Fuel efficiency for 1 to 2 people.
+	 */
+	private static final double ONE_PERSONS = 45;
+	/**
+	 * Fuel efficiency for 3 to 4 people.
+	 */
+	private static final double THREE_PERSONS = 32;
+	/**
+	 * Fuel efficiency for 5 to 6 people.
+	 */
+	private static final double FIVE_PERSONS = 28;
+	/**
+	 * Fuel efficiency for 7 to 8 people.
+	 */
+	private static final double SEVEN_PERSONS = 22;
+	/**
+	 * Fuel efficiency for 9 or more people.
+	 */
+	private static final double NINE_PERSONS = 15;
+	
+	// RENTAL FINAL VARIABLES
+	/**
+	 * Rental price for 1 to 2 people.
+	 */
+	private static final double RENTAL_ONE = 36.75;
+	/**
+	 * Rental price for 3 to 4 people.
+	 */
+	private static final double RENTAL_TWO = 50.13;
+	/**
+	 * Rental price for 5 to 6 people.
+	 */
+	private static final double RENTAL_THREE = 60.25;
+	/**
+	 * Rental price for 7 to 8 people.
+	 */
+	private static final double RENTAL_FOUR = 70.50;
+	/**
+	 * Rental price for 9 or more people.
+	 */
+	private static final double RENTAL_FIVE = 150;
+	
+	// MAIN INSTANCE VARIABLES
 	/**
 	 * A list of destinations that will be visited along the way on this RoadTrip.
 	 */
@@ -33,14 +88,9 @@ public class RoadTrip extends VacationPackage
 	 * stars, inclusive. Star values outside this range will be adjusted to the closest valid value.
 	 */
 	private int hotelRating;
-	/**
-	 * Default fuel price.
-	 */
-	private final double defaultFuelPrice = 2.5;
-	/**
-	 * Base room cost per night for lodging.
-	 */
-	private final double baseRoomCost = 32.5;
+	
+	
+	
 	
 	/**
 	 * Creates a newly initialized RoadTrip object using the parameter data.
@@ -51,16 +101,17 @@ public class RoadTrip extends VacationPackage
 	 * @param miles - The total number of miles for this RoadTrip, assuming people follow the intended route.
 	 * @param maxPersons - The number of people for whom this trip package will be budgeted.
 	 * @param hotelStars - The quality level of the hotels used during the RoadTrip, ranging from 1..5
-	 * stars, inclusive. Star values outside this range will be adjusted to the closest valid value.
+	 *                     stars, inclusive. Star values outside this range will be adjusted to the closest
+	 *                     valid value.
 	 */
 	public RoadTrip(String name, int numDays, String[] stops, double fuelCost, int miles, int maxPersons,
 			int hotelStars)
 	{
 		super(name, numDays);
 		this.stopsList = stops;
-		this.fuelPrice = fuelCost;
+		setFuelPrice(fuelCost);
 		this.totalMiles = miles;
-		this.maxNumPersons = maxPersons;
+		setPersons(maxPersons);
 		this.hotelRating = hotelStars;
 	}
 	
@@ -70,6 +121,19 @@ public class RoadTrip extends VacationPackage
 	 */
 	public int getHotelStars()
 	{
+		if (hotelRating >= 1 && hotelRating <= 5)
+		{
+			return this.hotelRating;
+		}
+		else if (hotelRating < 1)
+		{
+			this.hotelRating = 1;
+		}
+		else if (hotelRating > 5)
+		{
+			this.hotelRating = 5;
+		}
+		
 		return this.hotelRating;
 	}
 	
@@ -78,9 +142,11 @@ public class RoadTrip extends VacationPackage
 	 * total rental car, lodging, and fuel estimated costs.
 	 * @return The price of a vacation package in US Dollars.
 	 */
+	@Override
 	public double getPrice()
 	{
-		return 0.0;
+		double price = this.getCarCost() + this.getLodgingCost() + this.getEstimatedFuelCost();
+		return price;
 	}
 	
 	/**
@@ -88,9 +154,11 @@ public class RoadTrip extends VacationPackage
 	 * Road trip includes the full lodging cost plus the full rental car cost.
 	 * @return The deposit amount required in US Dollars.
 	 */
+	@Override
 	public double getDepositAmount()
 	{
-		return 0.0;
+		double depAmount = this.getLodgingCost() + this.getCarCost();
+		return depAmount;
 	}
 	
 	/**
@@ -98,9 +166,10 @@ public class RoadTrip extends VacationPackage
 	 * paid to the gas station, and not the travel agent. Thus, the balance due on RoadTrips is always 0.
 	 * @return The remaining balance to pay the travel agency.
 	 */
+	@Override
 	public double getAmountDue()
 	{
-		return 0.0;
+		return 0;
 	}
 	
 	/**
@@ -113,7 +182,7 @@ public class RoadTrip extends VacationPackage
 	 */
 	public double getLodgingCost()
 	{
-		return baseRoomCost * this.getHotelStars() * (this.getNumDays() - 1) 
+		return BASE_ROOM_COST * this.getHotelStars() * (this.getNumDays() - 1) 
 				* Math.ceil(this.getNumPersons() / 2.0);
 	}
 	
@@ -130,7 +199,27 @@ public class RoadTrip extends VacationPackage
 	 */
 	public double getCarCost()
 	{
-		return 0.0;
+		double carCost;
+		int numDays = getNumDays();
+		switch (maxNumPersons)
+		{
+			case 1:
+			case 2:
+				carCost = RENTAL_ONE * numDays;
+				break;
+			case 3:
+			case 4:
+				carCost = RENTAL_TWO * numDays;
+			case 5:
+			case 6:
+				carCost = RENTAL_THREE * numDays;
+			case 7:
+			case 8:
+				carCost = RENTAL_FOUR * numDays;
+			default:
+				carCost = RENTAL_FIVE * numDays;
+		}
+		return carCost;
 	}
 	
 	/**
@@ -174,7 +263,7 @@ public class RoadTrip extends VacationPackage
 		}
 		else
 		{
-			fuelPrice = defaultFuelPrice;
+			fuelPrice = BASE_FUEL_COST;
 		}
 	}
 	
@@ -201,26 +290,26 @@ public class RoadTrip extends VacationPackage
 	 */
 	public double getEstimatedFuelCost()
 	{
-		double price = 0;
-		if (this.getNumPersons() >= 1 && this.getNumPersons() <= 2)
+		double price;
+		if (maxNumPersons <= 2)
 		{
-			price = (totalMiles / 45.0) * this.getFuelPrice();
+			price = (totalMiles / ONE_PERSONS) * this.getFuelPrice();
 		}
-		else if (this.getNumPersons() >= 3 && this.getNumPersons() <= 4)
+		else if (maxNumPersons <= 4)
 		{
-			price = (totalMiles / 32.0) * this.getFuelPrice();
+			price = (totalMiles / THREE_PERSONS) * this.getFuelPrice();
 		}
-		else if (this.getNumPersons() >= 5 && this.getNumPersons() <= 6)
+		else if (maxNumPersons <= 6)
 		{
-			price = (totalMiles / 28.0) * this.getFuelPrice();
+			price = (totalMiles / FIVE_PERSONS) * this.getFuelPrice();
 		}
-		else if (this.getNumPersons() >= 7 && this.getNumPersons() <= 8)
+		else if (maxNumPersons <= 8)
 		{
-			price = (totalMiles / 22.0) * this.getFuelPrice();
+			price = (totalMiles / SEVEN_PERSONS) * this.getFuelPrice();
 		}
-		else if (this.getNumPersons() >= 9)
+		else
 		{
-			price = (totalMiles / 15.0) * this.getFuelPrice();
+			price = (totalMiles / NINE_PERSONS) * this.getFuelPrice();
 		}
 		return price;
 	}
@@ -258,7 +347,9 @@ public class RoadTrip extends VacationPackage
 	@Override
 	public String toString()
 	{
-		return String.format("$%8.2f  %s\n%36s %s",
-				this.getPrice(), this.getName(), "A road trip with stops at", this.getStops());
+		String summary = super.toString();
+		summary += String.format("\n           %s %s", "A road trip with stops at", this.getStops());
+		
+		return summary;
 	}
 }
