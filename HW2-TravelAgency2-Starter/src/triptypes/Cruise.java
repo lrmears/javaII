@@ -124,7 +124,7 @@ public class Cruise extends FlightOptionalPackage
 	 * order in which they were added.
 	 * @return The list of excursions.
 	 */
-	public String[] getExcursion()
+	public String[] getExcursions()
 	{
 		String[] listExcursions = excursions.toArray(new String[MAX_EXC]);
 		return listExcursions;
@@ -200,7 +200,7 @@ public class Cruise extends FlightOptionalPackage
 	 */
 	public int getNumExcursions()
 	{
-		String[] copyExc = this.getExcursion();
+		String[] copyExc = this.getExcursions();
 		int count = 0;
 		for (int i = 0; i < copyExc.length; i++)
 		{
