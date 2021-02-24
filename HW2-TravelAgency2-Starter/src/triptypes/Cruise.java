@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * This class represents a cruise package within the travel agency. It stores required information
  * about the cruise ship, including departure and arrival times. It allows for optional off-ship excursion
  * packages to be added to a trip for an additional price.
- * @author lmears, jsand
+ * @author lmears, jacobsand
  */
 public class Cruise extends FlightOptionalPackage
 {

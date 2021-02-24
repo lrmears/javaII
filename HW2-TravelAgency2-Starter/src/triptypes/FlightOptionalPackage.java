@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * This class encapsulates information about travel packages that can include optional flight arrangements.
  * Trips that have this format price flight information as an additional charge to a base package price
  * captured in a concrete subclass of FlightOptionalPackage.
- * @author lmears, jsand
+ * @author lmears, jacobsand
  */
 public abstract class FlightOptionalPackage extends VacationPackage
 {

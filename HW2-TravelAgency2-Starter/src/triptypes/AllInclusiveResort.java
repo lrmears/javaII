@@ -10,7 +10,7 @@ package triptypes;
  * This class encapsulates details related to an all-inclusive resort vacation package. Flight
  * information to/from the resort location can be added an additional price. Once at the resort,
  * all-inclusive packages are billed using a flat fee, regardless of the number of included amenities.
- * @author lmears, jsand
+ * @author lmears, jacobsand
  */
 public class AllInclusiveResort extends FlightOptionalPackage
 {

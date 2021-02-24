@@ -8,7 +8,7 @@ package triptypes;
 
 /**
  * This class represents a RoadTrip vacation that includes a rental car, overnight lodging, and fuel cost estimation.
- * @author lmears, jsand
+ * @author lmears, jacobsand
  */
 public class RoadTrip extends VacationPackage
 {

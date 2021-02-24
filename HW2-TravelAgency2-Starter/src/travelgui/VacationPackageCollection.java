@@ -13,7 +13,7 @@ import triptypes.FlightOptionalPackage;
 /**
  * This class serves as a collection to store, filter, and explore VacationPackages within the trip
  * search user interface. Up to 25 VacationPackages can be stored in a single collection.
- * @author lmears, jsand
+ * @author lmears, jacobsand
  */
 public class VacationPackageCollection
 {
@@ -93,7 +93,43 @@ public class VacationPackageCollection
 	 */
 	public VacationPackageCollection filterVacationsFor(int selection)
 	{
-		return null;
+
+		VacationPackageCollection filter = new VacationPackageCollection();
+		
+		if (selection == 1)
+		{
+			for (int i = 0; i < vacation.length; i++)
+			{
+				if (vacation[i] instanceof triptypes.RoadTrip)
+				{
+					filter.addVacation(vacation[i]);
+				}
+			}
+		}
+		
+		else if (selection == 2) 
+		{
+			for (int i = 0; i < vacation.length; i++)
+			{
+				if (vacation[i] instanceof triptypes.Cruise)
+				{
+					filter.addVacation(vacation[i]);
+				}
+			}
+		}
+		
+		else if (selection == 3)
+		{
+			for (int i = 0; i < vacation.length; i++)
+			{
+				if (vacation[i] instanceof triptypes.AllInclusiveResort)
+				{
+					filter.addVacation(vacation[i]);
+				}
+			}
+		}
+		
+		return filter;	
 	}
 	
 	/**
@@ -112,7 +148,43 @@ public class VacationPackageCollection
 	 */
 	public String getFlightDetails(int index)
 	{
-		return "";
+		String summary = ""; 
+		
+		if (index < 0 || index >= MAX_FLIGHTS)
+		{
+			summary = "ERROR: Index is out of range!";
+		}
+		
+		else if (vacation[index] instanceof triptypes.RoadTrip)
+		{
+			summary = "ERROR: No flights are allowed for this type of trip!";
+		}
+		
+		else if (!((FlightOptionalPackage) vacation[index]).hasFlights())
+		{
+			summary = "ERROR: The selected trip has no flight information.";
+		}
+		
+		else
+		{
+			
+			Flight[] a = new Flight[MAX_FLIGHTS];
+			
+			a = ((FlightOptionalPackage) vacation[index]).getFlightItinerary();
+
+			
+			for (int i = 0; i < MAX_FLIGHTS; i++)
+			{
+				if (a[i] != null)  
+				{
+					summary += a[i].toString() + "\n";
+				}
+				
+			}
+			
+		}
+	
+		return summary;
 	}
 	
 	/**
@@ -142,6 +214,40 @@ public class VacationPackageCollection
 	 */
 	public void sortCollection(boolean byPrice)
 	{
-		
+		if (byPrice)
+		{
+			for (int i = 0; i < MAX_PACK - 1; i++)
+			{
+				for (int r = 0; r < MAX_PACK - 1; r++)
+				{	
+					if (vacation[r + 1] != null
+							&& vacation[r].getPrice() > vacation[r + 1].getPrice())
+					{
+						
+						VacationPackage temp = (VacationPackage) vacation[r];
+						vacation[r] = vacation[r + 1];
+						vacation[r + 1] = temp;
+					}
+				}
+			}
+		}
+		else
+		{
+			for (int f = 0; f < MAX_PACK - 1; f++)
+			{
+				for (int g = 0; g < MAX_PACK - 1; g++)
+				{
+					
+					if (vacation[g + 1] != null
+							&& ((vacation[g].getName()).compareTo(
+									vacation[g + 1].getName())) > 0)
+					{
+						VacationPackage temp1 = vacation[g];
+						vacation[g] = vacation[g + 1];
+						vacation[g + 1] = temp1;
+					}
+				}
+			}
+		}
 	}
 }

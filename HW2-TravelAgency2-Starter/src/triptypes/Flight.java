@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * This class represents a single flight within the travel agency system.
- * @author lmears, jsand
+ * @author lmears, jacobsand
  */
 public class Flight
 {
