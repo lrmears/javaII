@@ -275,7 +275,14 @@ public class RoadTrip extends VacationPackage
 	{
 		return fuelPrice;
 	}
-	
+	/**
+	 * Retreives the current milege.
+	 * @return totalMiles
+	 */
+	public int getMiles()
+	{
+		return totalMiles;
+	}
 	/**
 	 * Provides a projection of the total fuel cost for this trip based on the total number of miles to
 	 * be traveled, the fuel efficiency of the rental car, and the cost of fuel. Standard rental cars
