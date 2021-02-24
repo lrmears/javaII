@@ -49,7 +49,7 @@ public class AllInclusiveResortTest
 	/**
 	 * .
 	 */
-	@d
+	@Test
 	public void AllInclusiveResortGetAmenitiesTest()
 	{
 		
