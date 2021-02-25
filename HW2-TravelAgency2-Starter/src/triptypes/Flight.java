@@ -87,8 +87,9 @@ public class Flight
 	public String toString()
 	{
 		SimpleDateFormat formatted = new SimpleDateFormat("HH:mm MM-dd-yyyy");
-		return String.format("%s%4d Departs: ", this.airlineOptions, this.flightNumber, 
-				"%s at %s; ", this.sourcePoint, formatted.format(this.departTime.getTime()),
-				"Arrives %s at %s", this.endPoint, formatted.format(this.arrivalTime.getTime()));
+		return String.format("%s%4d Departs: %s at %s; Arrives %s at %s", 
+				this.airlineOptions, this.flightNumber, this.sourcePoint,
+				formatted.format(this.departTime.getTime()), this.endPoint,
+				formatted.format(this.arrivalTime.getTime()));
 	}
 }
