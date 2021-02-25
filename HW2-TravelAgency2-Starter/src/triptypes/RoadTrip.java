@@ -210,12 +210,15 @@ public class RoadTrip extends VacationPackage
 			case 3:
 			case 4:
 				carCost = RENTAL_TWO * numDays;
+				break;
 			case 5:
 			case 6:
 				carCost = RENTAL_THREE * numDays;
+				break;
 			case 7:
 			case 8:
 				carCost = RENTAL_FOUR * numDays;
+				break;
 			default:
 				carCost = RENTAL_FIVE * numDays;
 		}
