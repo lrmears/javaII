@@ -88,6 +88,10 @@ public class RoadTrip extends VacationPackage
 	 * stars, inclusive. Star values outside this range will be adjusted to the closest valid value.
 	 */
 	private int hotelRating;
+	/**
+	 * Cost of lodging.
+	 */
+	private double lodgingCost;
 	
 	
 	
@@ -182,8 +186,20 @@ public class RoadTrip extends VacationPackage
 	 */
 	public double getLodgingCost()
 	{
-		return BASE_ROOM_COST * this.getHotelStars() * (this.getNumDays() - 1) 
-				* Math.ceil(this.getNumPersons() / 2.0);
+		int evenOdd = maxNumPersons % 2;
+		int numRooms;
+		
+		if (evenOdd == 0)
+		{
+			numRooms = maxNumPersons / 2;
+		}
+		else
+		{
+			numRooms = evenOdd + (maxNumPersons / 2);
+		}
+		
+		lodgingCost = BASE_ROOM_COST * hotelRating * (getNumDays() - 1) * numRooms;
+		return lodgingCost;
 	}
 	
 	/**
