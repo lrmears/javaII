@@ -27,8 +27,8 @@ public abstract class VacationPackage
 	 */
 	public VacationPackage(String name, int numDays)
 	{
-		setName(name);
-		setLength(numDays);
+		this.setName(name);
+		this.setLength(numDays);
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public abstract class VacationPackage
 	 */
 	public void setName(String name)
 	{
-		if (!name.equals("") && name != null)
+		if (name != null && !name.equals(""))
 		{
 			this.packageName = name;
 		}
