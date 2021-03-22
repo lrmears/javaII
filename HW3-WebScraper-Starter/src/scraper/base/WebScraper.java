@@ -106,6 +106,18 @@ public class WebScraper
 	{
 		return getImagesHelper(page);
 	}
+	private static boolean search(Object[] objects, String x) 
+	{ 
+		int n = objects.length; 
+		for (int i = 0; i < n; i++)
+		{ 
+			if (objects[i].equals(x))
+			{
+				return false;
+			}
+		} 
+		return true; 
+	}
 	private ResultSet getImagesHelper(String url)
 	{
 		ArrayList<String> imageList = new ArrayList<String>();
