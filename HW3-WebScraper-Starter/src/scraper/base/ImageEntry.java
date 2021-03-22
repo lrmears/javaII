@@ -14,13 +14,27 @@ package scraper.base;
 public class ImageEntry
 {
 	/**
+	 * holds the data for page.
+	 */
+	private String page;
+	/**
+	 * holds the data for the image.
+	 */
+	private String image;
+	
+	/**
 	 * Creates a new ImageEntry storing an image URL alongside the source page URL.
 	 * @param pageAddress - the URL for the page where the image was found
 	 * @param imgAddress - the full URL of the image itself
 	 */
 	public ImageEntry(String pageAddress, String imgAddress)
 	{
-		
+		this.page = pageAddress;
+		this.image = imgAddress;
+	}
+	public String getPageLocation()
+	{
+		return this.page;
 	}
 	
 	/**
@@ -29,7 +43,7 @@ public class ImageEntry
 	 */
 	public String getImgLocation()
 	{
-		return "";
+		return this.image;
 	}
 	
 	/**
@@ -40,7 +54,13 @@ public class ImageEntry
 	@Override
 	public boolean equals(Object other)
 	{
-		return true;
+		boolean result = false;
+		
+		if (other instanceof ImageEntry && this.image.equals(((ImageEntry) other).getImgLocation()))
+		{
+			result = true;
+		}
+		return result;
 	}
 	
 	/**
@@ -51,6 +71,6 @@ public class ImageEntry
 	@Override
 	public String toString()
 	{
-		return "";
+		return this.image;
 	}
 }
