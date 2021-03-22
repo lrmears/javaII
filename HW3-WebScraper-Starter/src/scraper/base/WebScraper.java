@@ -6,8 +6,13 @@
 
 package scraper.base;
 
-import scraper.utils.PageHistory;
+import java.util.ArrayList;
+
+import scraper.utils.Document;
+import scraper.utils.Elements;
 import scraper.utils.ResultSet;
+import scraper.utils.PageHistory;
+
 
 /**
  * This class provides a simple mechanism to crawl a series of webpages recursively and extract all
@@ -16,6 +21,9 @@ import scraper.utils.ResultSet;
  */
 public class WebScraper
 {
+	private int depth;
+	private String page;
+	private PageHistory history = new PageHistory();
 	/**
 	 * Builds a new WebScraper that should start at the provided URL and will by default explore that
 	 * page at a depth of 0. This allows extracting just the details from this page and nothing else.
@@ -35,7 +43,7 @@ public class WebScraper
 	 */
 	public WebScraper(String urlIn, int depthIn)
 	{
-		
+		setDepth(depthIn);
 	}
 	
 	/**
@@ -45,7 +53,15 @@ public class WebScraper
 	 */
 	public void setDepth(int depthIn)
 	{
+		if (depthIn >= 0)
+		{
+			depth = depthIn;
+		}
 		
+		else if (depth < 0)
+		{
+			this.depth = 0;
+		}
 	}
 	
 	/**
@@ -54,7 +70,7 @@ public class WebScraper
 	 */
 	public int getDepth()
 	{
-		return 0;
+		return this.depth;
 	}
 	
 	/**
@@ -64,7 +80,10 @@ public class WebScraper
 	 */
 	public void setURL(String url)
 	{
-		
+		if (!url.equals(""))
+		{
+			this.page = url;
+		}
 	}
 	
 	/**
@@ -73,7 +92,7 @@ public class WebScraper
 	 */
 	public String getURL()
 	{
-		return "";
+		return this.page;
 	}
 	
 	/**
@@ -85,7 +104,35 @@ public class WebScraper
 	 */
 	public ResultSet getImages()
 	{
-		return new ResultSet();
+		return getImagesHelper(page);
+	}
+	private ResultSet getImagesHelper(String url)
+	{
+		ArrayList<String> imageList = new ArrayList<String>();
+		ResultSet a = new ResultSet();
+		Document page = new Document();
+		if (page.loadPageFromURL(url)) 
+		{
+			Elements anchors = page.getElementsByTag("img");
+			int numberOfImages = anchors.size();
+			
+			String c = anchors.getNextElement().getAttributeValue("src"); 
+	
+			for (int i = 0; i < numberOfImages; i++)
+			{	
+				if (search(imageList.toArray(), c))
+				{
+					ImageEntry f = new ImageEntry(url, c);
+					a.addResult(f);
+					
+					if (!(i + 1 >= anchors.size()))
+					{
+						c = anchors.getNextElement().getAttributeValue("src");
+					}
+				}
+			}
+		}
+		return a;
 	}
 	
 	/**
@@ -104,9 +151,45 @@ public class WebScraper
 	 */
 	public ResultSet crawlPage()
 	{
-		return new ResultSet();
+		ResultSet a = crawlPageHelper(depth, page);
+		
+		return a;
 	}
-	
+	public ResultSet crawlPageHelper(int index, String urlIn)
+	{
+		ResultSet a = new ResultSet();
+		Document page = new Document();
+		history.markVisited(urlIn);
+		
+		if (page.loadPageFromURL(urlIn))
+		{
+			Elements c = page.getElementsByTag("a");
+			
+			
+			if (index == 0)
+			{
+				return getImagesHelper(urlIn);
+			}
+			else
+			{
+				a = getImagesHelper(urlIn);
+				
+				for (int i = 0; i < c.size(); i++)
+				{
+					String currentPage = c.getNextElement().getAttributeValue("href");
+					
+					if (!history.visited(currentPage))
+					{
+						a = a.merge(crawlPageHelper(index - 1, currentPage));
+						
+					}
+				}
+				
+			}
+		}
+		return a;
+	}
+
 	/**
 	 * Retrieves the historical trail of pages visited during the last top-level call to crawlPage.
 	 * @return     The most recent collection of pages visited. If the crawlPage method has not been
