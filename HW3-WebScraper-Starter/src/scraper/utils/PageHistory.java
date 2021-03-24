@@ -5,6 +5,7 @@
 // RESOURCES: I used not external resources in creating this class.
 
 package scraper.utils;
+import java.util.LinkedList;
 
 /**
  * This class provides a simple web-history tracking mechanism.
@@ -13,9 +14,14 @@ package scraper.utils;
 public class PageHistory
 {
 	/**
-	 * history.
+	 * Linked list that stores the web pages visited in chronological order.
 	 */
-	private String[] history;
+	private LinkedList<String> history = new LinkedList<String>();
+	/**
+	 * Boolean that represents if the website visited is a duplicate.
+	 */
+	private boolean duplicates = false;
+	
 	/**
 	 * Creates a new empty PageHistory object.
 	 */
@@ -28,9 +34,12 @@ public class PageHistory
 	 * Stores a given url in the PageHistory to indicate that the page at that url has been previously visited.
 	 * @param url - The page that has been visited.
 	 */
-	public void markVisited(java.lang.String url)
+	public void markVisited(String url)
 	{
-		
+		if (this.visited(url)) {
+			this.duplicates = true;
+		}
+		this.history.add(url);
 	}
 	
 	/**
@@ -39,9 +48,9 @@ public class PageHistory
 	 * @return true if url already exists somewhere in this PageHistory object, false if the page has not
 	 * been markedVisited in the past.
 	 */
-	public boolean visited(java.lang.String url)
+	public boolean visited(String url)
 	{
-		return true;
+		return this.history.contains(url);
 	}
 	
 	/**
@@ -52,7 +61,8 @@ public class PageHistory
 	 */
 	public String[] getHistory()
 	{
-		return history;
+		String[] output = new String[this.history.size()];
+		return (String[]) this.history.toArray(output);
 	}
 	
 	/**
@@ -62,6 +72,6 @@ public class PageHistory
 	 */
 	public boolean wereDuplicatesVisited()
 	{
-		return true;
+		return this.duplicates;
 	}
 }

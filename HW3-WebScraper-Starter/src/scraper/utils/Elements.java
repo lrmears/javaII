@@ -6,6 +6,10 @@
 
 package scraper.utils;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import org.jsoup.nodes.Element;
+
 /**
  * The Elements class represents a collection of HTML elements retrieved from a Document. It allows a
  * user to iterate through each Element and process them in a manner similar to Java's Scanner class.
@@ -14,12 +18,27 @@ package scraper.utils;
 public class Elements
 {
 	/**
+	 * Variable for elements.
+	 */
+	private org.jsoup.select.Elements elems;
+	/**
+	 * Iterator object.
+	 */
+	private Iterator<Element> itr;
+	
+	protected Elements(org.jsoup.select.Elements elemsIn)
+	{
+		this.elems = elemsIn;
+		this.itr = this.elems.iterator();
+	}
+	
+	/**
 	 * A predicate method to indicate whether another item exists inside this collection.
 	 * @return True if another item can be retrieved; false otherwise
 	 */
 	public boolean hasNextElement()
 	{
-		return true;
+		return this.itr.hasNext();
 	}
 	
 	/**
@@ -28,7 +47,16 @@ public class Elements
 	 */
 	public Element getNextElement()
 	{
-		return new Element();
+		Element e;
+		try
+		{
+			e = new Element((Element) this.itr.next());
+		}
+		catch (NoSuchElementException var3)
+		{
+			e = null;
+		}
+		return e;
 	}
 	
 	/**
@@ -37,6 +65,6 @@ public class Elements
 	 */
 	public int size()
 	{
-		return 0;
+		return this.elems.size();
 	}
 }

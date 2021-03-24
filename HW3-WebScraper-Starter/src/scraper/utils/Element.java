@@ -14,6 +14,15 @@ package scraper.utils;
 public class Element
 {
 	/**
+	 * Element to be taken in from Elements class.
+	 */
+	private org.jsoup.nodes.Element elem;
+	
+	protected Element(org.jsoup.nodes.Element elemIn)
+	{
+		this.elem = elemIn;
+	}
+	/**
 	 * Retrieves the value of a specified attribute from this element. URLs that are part of href
 	 * or src attributes will always be returned in absolute path terms.
 	 * @param attributeName - The attribute of interest, case insensitive. 
@@ -22,7 +31,9 @@ public class Element
 	 */
 	public String getAttributeValue(String attributeName)
 	{
-		return "";
+		return !attributeName.equalsIgnoreCase("href") && !attributeName.equalsIgnoreCase("src")
+				? this.elem.attr(attributeName)
+				: this.elem.absUrl(attributeName);
 	}
 	
 	/**
@@ -31,8 +42,6 @@ public class Element
 	 */
 	public String getInnerHTML()
 	{
-		return "";
+		return this.elem.html();
 	}
-	
-	
 }

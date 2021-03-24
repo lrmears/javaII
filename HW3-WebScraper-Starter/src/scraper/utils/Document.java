@@ -6,6 +6,9 @@
 
 package scraper.utils;
 
+import java.io.IOException;
+import org.jsoup.Jsoup;
+
 /**
  * This class represents a full HTML document made up of a series of elements. It provides methods
  * for loading a document from a web-page, a local file, or a String of HTML tags. Documents can be
@@ -14,6 +17,15 @@ package scraper.utils;
  */
 public class Document
 {
+	/**
+	 * Boolean that represents if the page is loaded.
+	 */
+	private boolean loaded = false;
+	/**
+	 * Document to use in the class.
+	 */
+	private org.jsoup.nodes.Document doc = null;
+	
 	/**
 	 * Creates an empty document object whose contents have not been loaded yet.
 	 */
@@ -30,7 +42,9 @@ public class Document
 	 */
 	public boolean loadPageFromHTML(String theHTML)
 	{
-		return true;
+		this.doc = Jsoup.parse(theHTML);
+		this.loaded = true;
+		return this.loaded;
 	}
 	
 	/**
@@ -42,11 +56,19 @@ public class Document
 	 */
 	public boolean loadPageFromURL(String theURL)
 	{
-		return true;
+		try
+		{
+			this.doc = Jsoup.connect(theURL).get();
+			this.loaded = true;
+		}
+		catch (IOException var3) {
+			this.loaded = false;
+		}
+		return this.loaded;
 	}
 	
 	public Elements getElementsByTag(String tag)
 	{
-		return new Elements();
+		return new Elements(this.doc.getElementsByTag(tag));
 	}
 }

@@ -6,6 +6,8 @@
 
 package scraper.utils;
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import scraper.base.ImageEntry;
 
 /**
@@ -16,9 +18,10 @@ import scraper.base.ImageEntry;
 public class ResultSet
 {
 	/**
-	 * filler.
+	 * Linked list that stores the result set.
 	 */
-	private ImageEntry[] imageEnt;
+	private LinkedList<ImageEntry> list = new LinkedList<ImageEntry>();
+
 	/**
 	 * Creates a new empty ResultSet object.
 	 */
@@ -26,6 +29,7 @@ public class ResultSet
 	{
 		
 	}
+	
 	/**
 	 * Adds the given ImageEntry to the end of this ResultSet. Addition of entries that would result
 	 * in two equivalent ImageEntry objects (by comparison via the quals method) will be ignored.
@@ -33,7 +37,10 @@ public class ResultSet
 	 */
 	public void addResult(ImageEntry img)
 	{
-		
+		if (!this.list.contains(img))
+		{
+			this.list.add(img);
+		}
 	}
 	
 	/**
@@ -46,7 +53,20 @@ public class ResultSet
 	 */
 	public ResultSet merge(ResultSet other)
 	{
-		return new ResultSet();
+		ResultSet res = new ResultSet();
+		res.list.addAll(this.list);
+		if (other != null)
+		{
+			Iterator var4 = other.list.iterator();
+
+			while (var4.hasNext())
+			{
+				ImageEntry ie = (ImageEntry) var4.next();
+				res.addResult(ie);
+			}
+		}
+
+		return res;
 	}
 	
 	/**
@@ -57,7 +77,15 @@ public class ResultSet
 	 */
 	public ImageEntry[] getAllResults()
 	{
-		return imageEnt;
+		if (this.list.size() == 0)
+		{
+			return null;
+		}
+		else
+		{
+			ImageEntry[] result = new ImageEntry[this.list.size()];
+			return (ImageEntry[]) this.list.toArray(result);
+		}
 	}
 	
 	/**
@@ -66,7 +94,7 @@ public class ResultSet
 	 */
 	public int getNumEntries()
 	{
-		return 0;
+		return this.list.size();
 	}
 	
 	/**
@@ -76,6 +104,6 @@ public class ResultSet
 	 */
 	public boolean contains(String url)
 	{
-		return true;
+		return this.list.contains(new ImageEntry(url, url));
 	}
 }
