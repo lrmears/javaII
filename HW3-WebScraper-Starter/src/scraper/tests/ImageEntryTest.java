@@ -9,8 +9,7 @@ package scraper.tests;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import scraper.utils.*;
-import scraper.base.*;
+import scraper.base.ImageEntry;
 
 public class ImageEntryTest 
 {

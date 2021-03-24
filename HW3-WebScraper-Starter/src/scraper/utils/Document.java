@@ -67,7 +67,14 @@ public class Document
 		}
 		return this.loaded;
 	}
-	
+	/**
+	 * Retrieves a (potentially empty) collection of Elements from this Document 
+	 * that match a specified HTML tag. For example, specifying a tag of "img" 
+	 * will retrieve a collection of all image elements from the document. A tag of "div" 
+	 * would retrieve all division elements.
+	 * @param tag is the tag for the method
+	 * @return item
+	 */
 	public Elements getElementsByTag(String tag)
 	{
 		return new Elements(this.doc.getElementsByTag(tag));

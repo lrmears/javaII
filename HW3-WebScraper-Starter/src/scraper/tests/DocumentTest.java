@@ -20,6 +20,8 @@ public class DocumentTest
 	{
 		Document page = new Document();
 		assertEquals(true, page.loadPageFromHTML("http://kreestman.unomaha.community/hw3testpage/page0.html"));
+		assertEquals(true, page.loadPageFromHTML(
+				"http://kreestman.unomaha.community/hw3testpage/brokenlinkhereyay.html"));
 	}
 	
 	@Test
@@ -27,13 +29,16 @@ public class DocumentTest
 	{
 		Document page = new Document();
 		assertEquals(true, page.loadPageFromURL("http://kreestman.unomaha.community/hw3testpage/page0.html"));
+		assertEquals(false, page.loadPageFromURL(
+				"http://kreestman.unomaha.community/hw3testpage/brokenlinkhereyay.html"));
+		
 	}
 	
 	@Test
 	public void getElementsByTagTest()
 	{
 		Document page = new Document();
-		
+		//assertEquals("http://kreestman.unomaha.community/hw3testpage/page2.html", page.getElementsByTag("img")); needs to be looked at
 	}
 
 }

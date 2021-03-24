@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import scraper.utils.Document;
 import scraper.utils.Elements;
-import scraper.utils.Element;
 import scraper.utils.ResultSet;
 import scraper.utils.PageHistory;
 
