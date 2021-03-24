@@ -45,17 +45,18 @@ public class Elements
 	 * Retrieves the next unread Element from the collection of Elements.
 	 * @return The next item in the collection if present. Null will be returned if no next item exists.
 	 */
-	public Element getNextElement()
+	public scraper.utils.Element getNextElement() 
 	{
-		Element e;
-		try
+		scraper.utils.Element e;
+		try 
 		{
-			e = new Element((Element) this.itr.next());
-		}
-		catch (NoSuchElementException var3)
+			e = new scraper.utils.Element((Element) this.iter.next());
+		} 
+		catch (NoSuchElementException var3) 
 		{
 			e = null;
 		}
+
 		return e;
 	}
 	
