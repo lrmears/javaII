@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import scraper.utils.Document;
 import scraper.utils.Elements;
+import scraper.utils.Element;
 import scraper.utils.ResultSet;
 import scraper.utils.PageHistory;
 
@@ -128,7 +129,7 @@ public class WebScraper
 			Elements anchors = page.getElementsByTag("img");
 			int numberOfImages = anchors.size();
 			
-			String c = anchors.getNextElement().getAttributeValue("src"); 
+			String c = anchors.getNextElement().getAttributeValue("src");
 	
 			for (int i = 0; i < numberOfImages; i++)
 			{	
