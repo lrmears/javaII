@@ -22,8 +22,17 @@ import scraper.utils.PageHistory;
  */
 public class WebScraper
 {
+	/**
+	 * .
+	 */
 	private int depth;
+	/**
+	 * .
+	 */
 	private String page;
+	/**
+	 * .
+	 */
 	private PageHistory history = new PageHistory();
 	/**
 	 * Builds a new WebScraper that should start at the provided URL and will by default explore that

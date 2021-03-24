@@ -9,8 +9,11 @@ package scraper.tests;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import scraper.utils.*;
+import scraper.base.*;
 
-public class ImageEntryTest {
+public class ImageEntryTest 
+{
 
 	@Test
 	public void imageEntryConstructorTest()
