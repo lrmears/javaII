@@ -32,6 +32,10 @@ public class ImageEntry
 		this.page = pageAddress;
 		this.image = imgAddress;
 	}
+	/**
+	 * Return the page location.
+	 * @return the page 
+	 */
 	public String getPageLocation()
 	{
 		return this.page;

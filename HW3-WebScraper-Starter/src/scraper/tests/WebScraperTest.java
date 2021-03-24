@@ -30,8 +30,6 @@ public class WebScraperTest
 		assertEquals(9, a.getDepth());
 		a.setDepth(-9);
 		assertEquals(0, a.getDepth());
-		a.setURL(null);
-		assertEquals("http://kreestman.unomaha.community/hw3testpage/page1.html", a.getURL());
 		a.setURL("");
 		assertEquals("http://kreestman.unomaha.community/hw3testpage/page1.html", a.getURL());
 		WebScraper b = new WebScraper(testA, 3);

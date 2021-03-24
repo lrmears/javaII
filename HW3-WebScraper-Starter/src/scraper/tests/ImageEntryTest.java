@@ -21,7 +21,8 @@ public class ImageEntryTest
 		String testA = "http://kreestman.unomaha.community/hw3testpage/page2.html";
 		String testB = "http://kreestman.unomaha.community/hw3testpage/imgs/Palm_Tree_Emoji_42x42.png";
 		ImageEntry a = new ImageEntry(testA, testB);
-		assertEquals("http://kreestman.unomaha.community/hw3testpage/imgs/Palm_Tree_Emoji_42x42.png", a.getImgLocation());
+		assertEquals("http://kreestman.unomaha.community/hw3testpage/imgs/Palm_Tree_Emoji_42x42.png", 
+				a.getImgLocation());
 		assertEquals("http://kreestman.unomaha.community/hw3testpage/page2.html", a.getPageLocation());
 		
 	}
@@ -35,13 +36,26 @@ public class ImageEntryTest
 	@Test
 	public void equalsTest()
 	{
+		String testA = "http://kreestman.unomaha.community/hw3testpage/page2.html";
+		String testB = "http://kreestman.unomaha.community/hw3testpage/imgs/Slice_Of_Pizza_Emoji_42x42.png";
+		String testC = "http://kreestman.unomaha.community/hw3testpage/imgs/Tears_of_Joy_Emoji_Icon_42x42.png";
+		ImageEntry a = new ImageEntry(testA, testB);
+		ImageEntry b = new ImageEntry(testA, testC);
+		ImageEntry c = new ImageEntry(testA, testB);
+		assertEquals(true, a.equals(c));
+		assertEquals(false, a.equals(b));
+
 		
 	}
 	
 	@Test
 	public void toStringTest()
 	{
-		
+		String testA = "http://kreestman.unomaha.community/hw3testpage/page2.html";
+		String testB = "http://kreestman.unomaha.community/hw3testpage/imgs/Slice_Of_Pizza_Emoji_42x42.png";
+		ImageEntry a = new ImageEntry(testA, testB);
+		assertEquals("http://kreestman.unomaha.community/hw3testpage/imgs/Slice_Of_Pizza_Emoji_42x42.png", 
+				a.toString());
 	}
 
 }
