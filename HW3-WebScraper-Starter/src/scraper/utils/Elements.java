@@ -24,12 +24,12 @@ public class Elements
 	/**
 	 * Iterator object.
 	 */
-	private Iterator<Element> itr;
+	private Iterator<Element> iter;
 	
 	protected Elements(org.jsoup.select.Elements elemsIn)
 	{
 		this.elems = elemsIn;
-		this.itr = this.elems.iterator();
+		this.iter = this.elems.iterator();
 	}
 	
 	/**
@@ -38,7 +38,7 @@ public class Elements
 	 */
 	public boolean hasNextElement()
 	{
-		return this.itr.hasNext();
+		return this.iter.hasNext();
 	}
 	
 	/**
