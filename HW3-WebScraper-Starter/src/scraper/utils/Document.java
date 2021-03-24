@@ -61,7 +61,8 @@ public class Document
 			this.doc = Jsoup.connect(theURL).get();
 			this.loaded = true;
 		}
-		catch (IOException var3) {
+		catch (IOException var3) 
+		{
 			this.loaded = false;
 		}
 		return this.loaded;

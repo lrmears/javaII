@@ -18,6 +18,11 @@ public class ImageEntryTest
 	@Test
 	public void imageEntryConstructorTest()
 	{
+		String testA = "http://kreestman.unomaha.community/hw3testpage/page2.html";
+		String testB = "http://kreestman.unomaha.community/hw3testpage/imgs/Palm_Tree_Emoji_42x42.png";
+		ImageEntry a = new ImageEntry(testA, testB);
+		assertEquals("http://kreestman.unomaha.community/hw3testpage/imgs/Palm_Tree_Emoji_42x42.png", a.getImgLocation());
+		assertEquals("http://kreestman.unomaha.community/hw3testpage/page2.html", a.getPageLocation());
 		
 	}
 	

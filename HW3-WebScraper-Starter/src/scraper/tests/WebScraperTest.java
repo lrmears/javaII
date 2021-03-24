@@ -45,7 +45,7 @@ public class WebScraperTest
 	@Test
 	public void setDepthTest()
 	{
-		
+
 	}
 	
 	@Test
