@@ -1,26 +1,26 @@
 // COURSE: CSCI1620
-// TERM: SPRING 2020
-// 
-// NAME: Name
-// RESOURCES: No outside resources were used in the creation of this enum.
+// TERM: Spring 2021
+//
+// NAME: Logan Mears, Jacob Sand
+// RESOURCES: I used not external resources in creating this class.
 
 package reports;
 
 /**
  * An Exception to be thrown if it is attempted to write a report that has not been processed.
  * The "serialVersionUID" warning can be suppressed.
- * @author YOUR NAME
  *
+ * @author lmears, jacobsand
  */
 @SuppressWarnings("serial")
 public class DataNotProcessedException extends RuntimeException
 {
-	/**
-	 * Sets the message of the Exception to "Data not processed, cannot write report".
-	 */
-	public DataNotProcessedException()
-	{
-		
-	}
+    /**
+     * Sets the message of the Exception to "Data not processed, cannot write report".
+     */
+    public DataNotProcessedException()
+    {
+
+    }
 
 }
