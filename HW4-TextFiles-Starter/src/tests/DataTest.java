@@ -110,5 +110,21 @@ public class DataTest {
 		double standardDeviation = Data.standardDeviation(doubleArray);
 		assertEquals(0.0, standardDeviation, 0.1);
 	}
+	@Test
+	/**
+	 * Tests the data class overall
+	 */
+	public void dataTest()
+	{
+		Double[] doubleArray = {9.7, 2.5, 9.9, 7.2, 1.1, 2.3, 7.4};
+		double standardDeviation = Data.standardDeviation(doubleArray);
+		assertEquals(3.4, standardDeviation, 0.1);
+		double maximumValue = Data.maximum(doubleArray);
+		assertEquals(9.9, maximumValue, 0.1);
+		double minimumValue = Data.minimum(doubleArray);
+		assertEquals(1.1, minimumValue, 0.1);
+		double averageValue = Data.average(doubleArray);
+		assertEquals(5.7, averageValue, 0.1);
+	}
 	
 }
