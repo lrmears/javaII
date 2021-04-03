@@ -15,12 +15,12 @@ package reports;
 @SuppressWarnings("serial")
 public class DataNotProcessedException extends RuntimeException
 {
-    /**
-     * Sets the message of the Exception to "Data not processed, cannot write report".
-     */
-    public DataNotProcessedException()
-    {
+	/**
+	 * Sets the message of the Exception to "Data not processed, cannot write report".
+	 */
+	public DataNotProcessedException()
+	{
 
-    }
+	}
 
 }

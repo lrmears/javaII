@@ -15,11 +15,11 @@ package reports;
 @SuppressWarnings("serial")
 public class YearNotFoundException extends RuntimeException
 {
-    /**
-     * Sets the message of the Exception to "Requested year not in file".
-     */
-    public YearNotFoundException()
-    {
+	/**
+	 * Sets the message of the Exception to "Requested year not in file".
+	 */
+	public YearNotFoundException()
+	{
 
-    }
+	}
 }
