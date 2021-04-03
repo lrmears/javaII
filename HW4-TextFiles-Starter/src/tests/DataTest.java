@@ -100,5 +100,15 @@ public class DataTest {
 		double standardDeviation = Data.standardDeviation(doubleArray);
 		assertEquals(2.9, standardDeviation, 0.1);
 	}
+	@Test
+	/**
+	 * Tests to see if given no values returns 0.0
+	 */
+	public void standardDeviationZeroTest()
+	{
+		Double[] doubleArray = {};
+		double standardDeviation = Data.standardDeviation(doubleArray);
+		assertEquals(0.0, standardDeviation, 0.1);
+	}
 	
 }
