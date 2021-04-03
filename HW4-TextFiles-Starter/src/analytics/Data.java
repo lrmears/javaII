@@ -31,7 +31,11 @@ public class Data
 		// Starts at index 1 due to the above line.
 		for (int i = 1; i < data.length; i++)
 		{
-			if (minValue.compareTo(data[i]) < 0)
+			if (data[i] == null)
+			{
+				break;
+			}
+			if (minValue.compareTo(data[i]) > 0)
 			{
 				// Sets minValue to current item if it is less than the current minValue.
 				minValue = data[i];
@@ -62,7 +66,7 @@ public class Data
 			{
 				break;
 			}
-			if (maxValue.compareTo(data[i]) > 0)
+			if (maxValue.compareTo(data[i]) < 0)
 			{
 				// Sets maxValue to current item if it is more than the current maxValue.
 				maxValue = data[i];
