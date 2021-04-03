@@ -80,4 +80,25 @@ public class DataTest {
 		double averageValue = Data.average(doubleArray);
 		assertEquals(7.3, averageValue, 0.1);
 	}
+	@Test
+	/**
+	 * Tests to see if the standard deviation method works
+	 */
+	public void standardDeviationTest()
+	{
+		Double[] doubleArray = {9.7, 2.5, 9.9, 7.2, 1.1, 2.3, 7.4};
+		double standardDeviation = Data.standardDeviation(doubleArray);
+		assertEquals(3.4, standardDeviation, 0.1);
+	}
+	@Test
+	/**
+	 * Tests to see if the standard deviation method works with a null
+	 */
+	public void standardDeviationNullTest()
+	{
+		Double[] doubleArray = {9.7, 2.5, 9.9, 7.2, null, 2.3, 7.4};
+		double standardDeviation = Data.standardDeviation(doubleArray);
+		assertEquals(2.9, standardDeviation, 0.1);
+	}
+	
 }
