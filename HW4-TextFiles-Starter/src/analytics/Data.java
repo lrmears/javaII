@@ -123,6 +123,35 @@ public class Data
 	 */
 	public static <N extends Number> Double standardDeviation(N[] data)
 	{
-		return null;
+		double standardDevi = 0.0, mean = 0.0, total = 0, count = 0;; 
+		// starting variables for double
+		int dataLength = 0; // array length variable
+		for (int i = 0; i < data.length && data[i] != null; i++) // average tool from the previous method
+		{
+			total += data[i].doubleValue();
+			++count;
+		}
+		if (count == 0)
+		{
+			mean = 0.0;
+		}
+		else
+		{
+			mean = total/count;
+		}
+		for (Number num : data) 
+		{
+			if (num == null)
+			{
+				break;
+			}
+           standardDevi += Math.pow(num.doubleValue() - mean, 2);
+        }
+		for (int i = 0; i < data.length && data[i] != null; i++)
+		{
+			dataLength++;
+		}
+		
+		return Math.sqrt(standardDevi/dataLength);
 	}
 }
