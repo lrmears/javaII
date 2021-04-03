@@ -87,7 +87,20 @@ public class Data
 	 */
 	public static <N extends Number> Double average(N[] data)
 	{
-		return null;
+		double total = 0, count = 0;
+		for (int i = 0; i < data.length && data[i] != null; i++)
+		{
+			total += data[i].doubleValue();
+			++count;
+		}
+		if (count == 0)
+		{
+			return 0.0;
+		}
+		else
+		{
+			return total/count;
+		}
 	}
 
 	/**
