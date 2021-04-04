@@ -20,7 +20,7 @@ public class Data
 	 * Unused elements will be null and should not be considered in computations.
 	 * Once the first null is encountered it is assumed remaining elements are unused.
 	 *
-	 * @param E    - Type of data passed. The type must implement the Comparable interface.
+	 * @param <E>  - Type of data passed. The type must implement the Comparable interface.
 	 * @param data - Collection of data to find minimum value of.
 	 * @return Minimum value in passed data.
 	 */
@@ -51,7 +51,7 @@ public class Data
 	 * Unused elements will be null and should not be considered in computations.
 	 * Once the first null is encountered it is assumed remaining elements are unused.
 	 *
-	 * @param E    - Type of data passed. The type must implement the Comparable interface.
+	 * @param <E>  - Type of data passed. The type must implement the Comparable interface.
 	 * @param data - Collection of data to find maximum value of.
 	 * @return Maximum value in passed data.
 	 */
@@ -82,7 +82,7 @@ public class Data
 	 * Unused elements will be null and should not be considered in computations.
 	 * Once the first null is encountered it is assumed remaining elements are unused.
 	 *
-	 * @param N    - Type of data passed. The type must extend the Number class.
+	 * @param <N>  - Type of data passed. The type must extend the Number class.
 	 *             See the assignment supplemental for useful information on the Number class.
 	 * @param data - Collection of data to find average of.
 	 * @return Average of passed data. Regardless of type passed will always return a Double.
@@ -103,7 +103,7 @@ public class Data
 		}
 		else
 		{
-			return total/count;
+			return total / count;
 		}
 	}
 
@@ -114,7 +114,7 @@ public class Data
 	 * Unused elements will be null and should not be considered in computations.
 	 * Once the first null is encountered it is assumed remaining elements are unused.
 	 *
-	 * @param N    - Type of data passed. The type must extend the Number class.
+	 * @param <N>  - Type of data passed. The type must extend the Number class.
 	 *             See the assignment supplemental for useful information on the Number class.
 	 * @param data - Collection of data to find standard deviation of.
 	 * @return Population Standard Deviation of passed data. Regardless of type passed will always return a Double.
@@ -123,7 +123,7 @@ public class Data
 	 */
 	public static <N extends Number> Double standardDeviation(N[] data)
 	{
-		double standardDevi = 0.0, mean = 0.0, total = 0, count = 0;; 
+		double standardDevi = 0.0, mean = 0.0, total = 0, count = 0;
 		// starting variables for double
 		int dataLength = 0; // array length variable
 		for (int i = 0; i < data.length && data[i] != null; i++) // average tool from the previous method
@@ -137,21 +137,21 @@ public class Data
 		}
 		else
 		{
-			mean = total/count;
+			mean = total / count;
 		}
-		for (Number num : data) 
+		for (Number num : data)
 		{
 			if (num == null)
 			{
 				break;
 			}
-           standardDevi += Math.pow(num.doubleValue() - mean, 2);
-        }
+			standardDevi += Math.pow(num.doubleValue() - mean, 2);
+		}
 		for (int i = 0; i < data.length && data[i] != null; i++)
 		{
 			dataLength++;
 		}
-		
-		return Math.sqrt(standardDevi/dataLength);
+
+		return Math.sqrt(standardDevi / dataLength);
 	}
 }
