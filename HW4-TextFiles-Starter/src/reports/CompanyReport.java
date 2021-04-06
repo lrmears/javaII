@@ -6,7 +6,12 @@
 
 package reports;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * A report for a single company of Fortune 500 data.
@@ -17,6 +22,9 @@ import java.io.File;
  */
 public class CompanyReport implements Report
 {
+	private File fileIn;
+	private String companyName;
+	private ArrayList<String[]> records;
 	/**
 	 * Creates new CompanyReport for given company; data to be read from given file.
 	 *
@@ -25,7 +33,9 @@ public class CompanyReport implements Report
 	 */
 	public CompanyReport(File inputFileIn, String companyIn)
 	{
-
+		this.fileIn = inputFileIn;
+		this.companyName = companyIn;
+		records = new ArrayList<String[]>();
 	}
 
 	/**
@@ -39,7 +49,27 @@ public class CompanyReport implements Report
 	 */
 	public boolean processReport()
 	{
-		return false;
+		//TODO: Finish this dumb method.
+		String line = "";
+		String[] values;
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader(fileIn));
+			while ((line = br.readLine()) != null)
+			{
+				values = line.split(",");
+				records.add(values);
+			}
+		}
+		catch (FileNotFoundException e)
+		{
+			System.out.println("File not found!");
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 	/**
@@ -50,7 +80,7 @@ public class CompanyReport implements Report
 	 * @return true if write successful, false if file cannot be created.
 	 * @throws DataNotProcessedException - Thrown if write attempted and report has not yet been processed.
 	 */
-	public boolean writeReport(File outputFile)
+	public boolean writeReport(File outputFile) throws DataNotProcessedException
 	{
 		return false;
 	}
