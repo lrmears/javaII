@@ -100,6 +100,10 @@ public class CompanyReport implements Report
 	 * Standard Deviation of Rank.
 	 */
 	private double stdrank;
+	/**
+	 * Boolean storing didReport for toString.
+	 */
+	private boolean didReport;
 
 	/**
 	 * Creates new CompanyReport for given company; data to be read from given file.
@@ -157,12 +161,13 @@ public class CompanyReport implements Report
 				}
 			}
 			sc.close();
-
+			this.didReport = true;
 			return true;
 		}
 		catch (FileNotFoundException e)
 		{
 			System.out.println("File not Found");
+			this.didReport = false;
 			return false;
 		}
 		finally
@@ -260,16 +265,30 @@ public class CompanyReport implements Report
 	@Override
 	public String toString()
 	{
-		return String.format("Fortune 500 report for %s ranked %d times\n"
-						+ "Revenue\n"
-						+ "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f\n"
-						+ "Profit\n"
-						+ "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f\n"
-						+ "Rank\n"
-						+ "Min: %d Max: %d Avg: %.3f StD: %.3f", this.companyName,
-				this.rank, this.minimumreven, this.maximumreven, this.avergreve,
-				this.stanardivreven, this.minprofit, this.maxprofit, this.avgprofit, this.stdprofit,
-				this.minrank, this.maxrank, this.avgrank, this.stdrank);
+		if (this.didReport)
+		{
+			return String.format("Fortune 500 Report for %s ranked %d times\n"
+							+ "Revenue\n"
+							+ "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f\n"
+							+ "Profit\n"
+							+ "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f\n"
+							+ "Rank\n"
+							+ "Min: %d Max: %d Avg: %.3f StD: %.3f", this.companyName,
+					this.rank, this.minimumreven, this.maximumreven, this.avergreve,
+					this.stanardivreven, this.minprofit, this.maxprofit, this.avgprofit,
+					this.stdprofit, this.minrank, this.maxrank, this.avgrank, this.stdrank);
+		}
+		else
+		{
+			return String.format("Fortune 500 Report for %s ranked 0 times\n"
+					+ "Revenue\n"
+					+ "Min: nul Max: nul Avg: nul StD: nul\n"
+					+ "Profit\n"
+					+ "Min: nul Max: nul Avg: nul StD: nul\n"
+					+ "Rank\n"
+					+ "Min: null Max: null Avg: nul StD: nul", this.companyName);
+
+		}
 	}
 
 	/**

@@ -81,17 +81,19 @@ public class YearReport implements Report
 	 */
 	private double stdprofit;
 	/**
-	 * Creates new YearReport for given year; data to be read from given file.
-	 *
-	 * @param inputFileIn - File containing Fortune 500 data for this report.
-	 * @param yearIn - Year to report Fortune 500 data.
+	 * Variable storing the year.
 	 */
 	private int year;
+	/**
+	 * Boolean storing didReport for toString.
+	 */
+	private boolean didReport;
 
 	/**
 	 * Creates new YearReport for given year; data to be read from given file.
-	 * @param inputFileIn - - File containing Fortune 500 data for this report.
-	 * @param yearIn - - Year to report Fortune 500 data.
+	 *
+	 * @param inputFileIn - File containing Fortune 500 data for this report.
+	 * @param yearIn      - Year to report Fortune 500 data.
 	 */
 	public YearReport(File inputFileIn, int yearIn)
 	{
@@ -142,12 +144,13 @@ public class YearReport implements Report
 				}
 			}
 			sc.close();
-
+			this.didReport = true;
 			return true;
 		}
 		catch (FileNotFoundException e)
 		{
 			System.out.println("File not Found");
+			this.didReport = true;
 			return false;
 		}
 		finally
@@ -234,13 +237,23 @@ public class YearReport implements Report
 	@Override
 	public String toString()
 	{
-		return String.format("Forturne 500 Report for %d\n"
-						+ "Revenue\n"
-						+ "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f\n"
-						+ "Profit\n"
-						+ "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f", this.year,
-				this.minimumreven, this.maximumreven, this.avergreve, this.stanardivreven,
-				this.minprofitfit, this.maxprofit, this.stdprofit, this.avgprofit);
+		if (this.didReport)
+		{
+			return String.format("Fortune 500 Report for %d\n"
+							+ "Revenue\n"
+							+ "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f\n"
+							+ "Profit\n"
+							+ "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f", this.year, this.minimumreven, this.maximumreven, this.avergreve,
+					this.stanardivreven, this.minprofitfit, this.maxprofit, this.stdprofit, this.avgprofit);
+		}
+		else
+		{
+			return String.format("Fortune 500 Report for %d\n"
+					+ "Revenue\n"
+					+ "Min: nul Max: nul Avg: nul StD: nul\n"
+					+ "Profit\n"
+					+ "Min: nul Max: nul Avg: nul StD: nul", this.year);
+		}
 	}
 
 	/**
