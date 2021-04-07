@@ -37,7 +37,7 @@ public class YearReportTest
 		File inputFile = new File("fortune500.csv");
 		YearReport d = new YearReport(inputFile, 1980);
 		d.processReport();
-		assertEquals("Forturne 500 Report for 1980\n"
+		assertEquals("Fortune 500 Report for 1980\n"
 				+ "Revenue\n"
 				+ "Min: 409.700 Max: 79106.500 Avg: 2890.625 StD: 6317.787\n"
 				+ "Profit\n"

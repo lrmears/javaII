@@ -38,7 +38,7 @@ public class CompanyReportTest
 		File inputFile = new File("fortune500.csv");
 		CompanyReport d = new CompanyReport(inputFile, "Witco");
 		d.processReport();
-		assertEquals("Fortune 500 report for Witco ranked 20 times\n"
+		assertEquals("Fortune 500 Report for Witco ranked 20 times\n"
 				+ "Revenue\n"
 				+ "Min: 95.600 Max: 966.800 Avg: 336.275 StD: 241.165\n"
 				+ "Profit\n"
