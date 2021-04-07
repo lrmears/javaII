@@ -30,6 +30,19 @@ public class YearReportTest
 		assertEquals("Problem in YearReport basic toString format, check spelling, capitalization,"
 				+ "spacing, and format", expected, y.toString());
 	}
+	@Test
+	public void basicYearToStringTest()
+	{
+		File inputFile = new File("fortune500.csv");
+		YearReport d = new YearReport(inputFile, 1980);
+		d.processReport();
+		assertEquals("Forturne 500 Report for 1980\n"
+				+ "Revenue\n"
+				+ "Min: 409.700 Max: 79106.500 Avg: 2890.625 StD: 6317.787\n"
+				+ "Profit\n"
+				+ "Min: -1097.300 Max: 4295.200 Avg: 356.229 StD: 156.707", d.toString());
+		
+	}
 
 }
 

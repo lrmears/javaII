@@ -6,7 +6,7 @@ public class Tester {
 
 	public static void main(String[] args) {
 		File inputFile = new File("fortune500.csv");
-		YearReport d = new YearReport(inputFile, 1980);
+		CompanyReport d = new CompanyReport(inputFile, "Witco");
 		d.processReport();
 		System.out.println(d.toString());
 

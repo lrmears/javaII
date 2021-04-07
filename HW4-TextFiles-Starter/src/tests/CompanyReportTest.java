@@ -12,6 +12,7 @@ import java.io.File;
 
 import org.junit.Test;
 import reports.CompanyReport;
+import reports.YearReport;
 
 public class CompanyReportTest
 {
@@ -31,5 +32,20 @@ public class CompanyReportTest
 		assertEquals("Problem in CompanyReport basic toString format, check spelling, capitalization, spacing, and format",
 				expected, c.toString());
 	}
-
+	@Test
+	public void basicCompanyToStringTest()
+	{
+		File inputFile = new File("fortune500.csv");
+		CompanyReport d = new CompanyReport(inputFile, "Witco");
+		d.processReport();
+		assertEquals("Fortune 500 report for Witco ranked 20 times\n"
+				+ "Revenue\n"
+				+ "Min: 95.600 Max: 966.800 Avg: 336.275 StD: 241.165\n"
+				+ "Profit\n"
+				+ "Min: 3.000 Max: 42.800 Avg: 13.805 StD: 10.437\n"
+				+ "Rank\n"
+				+ "Min: 294 Max: 413 Avg: 367.450 StD: 35.518", d.toString());
+		
+	}
+	
 }
