@@ -111,7 +111,17 @@ public class CompanyReport implements Report
 	@Override
 	public String toString()
 	{
-		return null;
+		String text;
+		return text = String.format(" ");
+		// all this can be used for how to write the format for the to string over riding
+		//CompanyReport c = new CompanyReport(new File("fortune500.csv"), "Nike");
+		//String expected = "Fortune 500 Report for Nike ranked 0 times\n"
+		//		+ "Revenue\n"
+		//		+ "Min: nul Max: nul Avg: nul StD: nul\n"
+		//		+ "Profit\n"
+		//		+ "Min: nul Max: nul Avg: nul StD: nul\n"
+		//		+ "Rank\n"
+		//		+ "Min: null Max: null Avg: nul StD: nul";
 	}
 
 	/**
@@ -121,7 +131,7 @@ public class CompanyReport implements Report
 	 */
 	public String getCompany()
 	{
-		return null;
+		return this.companyName;
 	}
 
 }

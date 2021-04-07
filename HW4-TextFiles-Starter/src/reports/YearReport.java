@@ -6,7 +6,12 @@
 
 package reports;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * A report for a single year of Fortune 500 data.
@@ -17,6 +22,9 @@ import java.io.File;
  */
 public class YearReport implements Report
 {
+	private File fileIn;
+	private int year;
+	private ArrayList<String[]> records;
 	/**
 	 * Creates new YearReport for given year; data to be read from given file.
 	 *
@@ -40,7 +48,27 @@ public class YearReport implements Report
 	 */
 	public boolean processReport()
 	{
-		return false;
+		// ported over from company report
+		String line = "";
+		String[] values;
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader(fileIn));
+			while ((line = br.readLine()) != null)
+			{
+				values = line.split(",");
+				records.add(values);
+			}
+		}
+		catch (FileNotFoundException e)
+		{
+			System.out.println("File not found!");
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 	/**
@@ -79,7 +107,16 @@ public class YearReport implements Report
 	@Override
 	public String toString()
 	{
-		return null;
+		String text;
+		return text = String.format(" ");
+		// all this can be used for how the to string format should look.
+		//YearReport y = new YearReport(new File("fortune500.csv"), 2020);
+		//String expected = "Fortune 500 Report for 2020\n"
+		//		+ "Revenue\n"
+		//		+ "Min: nul Max: nul Avg: nul StD: nul\n"
+		//		+ "Profit\n"
+		//		+ "Min: nul Max: nul Avg: nul StD: nul";
+
 	}
 
 	/**
@@ -89,7 +126,7 @@ public class YearReport implements Report
 	 */
 	public int getYear()
 	{
-		return 0;
+		return this.year;
 	}
 
 }
