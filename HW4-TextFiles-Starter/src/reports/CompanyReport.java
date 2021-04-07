@@ -161,17 +161,6 @@ public class CompanyReport implements Report
 				}
 			}
 			sc.close();
-			this.didReport = true;
-			return true;
-		}
-		catch (FileNotFoundException e)
-		{
-			System.out.println("File not Found");
-			this.didReport = false;
-			return false;
-		}
-		finally
-		{
 			int numEntries = yearDataTmp.size();
 
 			this.yearData = new Integer[numEntries];
@@ -203,8 +192,15 @@ public class CompanyReport implements Report
 			this.stdrank = Data.standardDeviation(this.rankData);
 			this.rank = this.rankData.length;
 
+			this.didReport = true;
+			return true;
 		}
-
+		catch (FileNotFoundException e)
+		{
+			System.out.println("File not Found");
+			this.didReport = false;
+			return false;
+		}
 	}
 
 	/**
@@ -217,21 +213,28 @@ public class CompanyReport implements Report
 	 */
 	public boolean writeReport(File outputFile) throws DataNotProcessedException
 	{
-		try
+		if (this.didReport)
 		{
-			FileOutputStream fileout = new FileOutputStream(outputFile, false);
-			PrintWriter writer = new PrintWriter(fileout);
-			writer.print(this.toString());
+			try
+			{
+				FileOutputStream fileout = new FileOutputStream(outputFile, false);
+				PrintWriter writer = new PrintWriter(fileout);
+				writer.print(this.toString());
 
-			writer.close();
+				writer.close();
 
-			return true;
+				return true;
+			}
+			catch (FileNotFoundException e)
+			{
+
+				System.out.println("File not Found");
+				return false;
+			}
 		}
-		catch (FileNotFoundException e)
+		else
 		{
-
-			System.out.println("File not Found");
-			return false;
+			throw new DataNotProcessedException();
 		}
 
 

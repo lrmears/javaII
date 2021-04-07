@@ -1,0 +1,7 @@
+Fortune 500 Report for Witco ranked 0 times
+Revenue
+Min: nul Max: nul Avg: nul StD: nul
+Profit
+Min: nul Max: nul Avg: nul StD: nul
+Rank
+Min: null Max: null Avg: nul StD: nul
