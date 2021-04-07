@@ -20,6 +20,6 @@ public class YearNotFoundException extends RuntimeException
 	 */
 	public YearNotFoundException()
 	{
-
+		System.out.println("Requested year not in file");
 	}
 }

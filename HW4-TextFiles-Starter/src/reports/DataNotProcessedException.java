@@ -20,7 +20,7 @@ public class DataNotProcessedException extends RuntimeException
 	 */
 	public DataNotProcessedException()
 	{
-
+		System.out.println("Data not processed, cannot write report");
 	}
 
 }
