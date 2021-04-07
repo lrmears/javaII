@@ -6,12 +6,14 @@
 
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.File;
 
 import org.junit.Test;
 
+import reports.CompanyReport;
+import reports.YearNotFoundException;
 import reports.YearReport;
 
 public class YearReportTest
@@ -43,6 +45,44 @@ public class YearReportTest
 				+ "Profit\n"
 				+ "Min: -1097.300 Max: 4295.200 Avg: 356.229 StD: 156.707", d.toString());
 
+	}
+	@Test(expected = YearNotFoundException.class)
+	public void yearNotFoundExecption()
+	{
+		File inputFile = new File("fortune500.csv");
+		YearReport d = new YearReport(inputFile, 2100);
+		d.processReport();
+	}
+	
+	@Test
+	public void fileNotFoundTest()
+	{
+		File inputFile = new File("fortune50.csv");
+		CompanyReport d = new CompanyReport(inputFile, "Witco");
+		assertFalse(d.processReport());
+	}
+	@Test
+	public void yearConstructMethodTest()
+	{
+		YearReport z = new YearReport(new File("fortune500.csv"), 1980);
+		
+		assertEquals(z.getYear(), 1980);
+	}
+	@Test
+	public void proccessYearReportTrue()
+	{
+		YearReport z = new YearReport(new File("fortune500.csv"), 1980);
+		
+		assertEquals(z.processReport(), true);
+		
+		assertEquals(z.getYear(), 1980);
+	}
+	@Test
+	public void getYearAsZeroTest()
+	{
+		YearReport z = new YearReport(new File("fortune500.csv"), 2020);
+		
+		assertEquals(z.getYear(), 2020);
 	}
 
 }

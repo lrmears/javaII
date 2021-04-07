@@ -124,62 +124,65 @@ public class YearReport implements Report
 		ArrayList<Integer> rankDataTmp = new ArrayList<Integer>();
 		ArrayList<Double> revenueDataTmp = new ArrayList<Double>();
 		ArrayList<Double> profitDataTmp = new ArrayList<Double>();
-
-
-		try
+		
+		if (this.year > MAXYEAR || this.year < MINYEAR)
 		{
-			Scanner sc = new Scanner(inputFile);
-
-			while (sc.hasNext())
+			throw new YearNotFoundException();
+		}
+		else 
+		{
+			
+			try
 			{
-				String[] mapping = sc.nextLine().split(",");
+				Scanner sc = new Scanner(inputFile);
 
-				// we only care about entries for our specific company
-				if (mapping[YEAR].equals(Integer.toString(this.year)))
+				while (sc.hasNext())
 				{
-					yearDataTmp.add(Integer.parseInt(mapping[YEAR]));
-					rankDataTmp.add(Integer.parseInt(mapping[RANK]));
-					revenueDataTmp.add(Double.parseDouble(mapping[REVENUE]));
-					profitDataTmp.add(Double.parseDouble(mapping[PROFIT]));
+					String[] mapping = sc.nextLine().split(",");
+
+					// we only care about entries for our specific company
+					if (mapping[YEAR].equals(Integer.toString(this.year)))
+					{
+						yearDataTmp.add(Integer.parseInt(mapping[YEAR]));
+						rankDataTmp.add(Integer.parseInt(mapping[RANK]));
+						revenueDataTmp.add(Double.parseDouble(mapping[REVENUE]));
+						profitDataTmp.add(Double.parseDouble(mapping[PROFIT]));
+					}
 				}
+				sc.close();
+				int numEntries = yearDataTmp.size();
+				
+				this.yearData = new Integer[numEntries];
+				this.rankData = new Integer[numEntries];
+				this.revenueData = new Double[numEntries];
+				this.profitData = new Double[numEntries];
+
+				for (int i = 0; i < numEntries; ++i)
+				{
+					this.yearData[i] = yearDataTmp.get(i);
+					this.rankData[i] = rankDataTmp.get(i);
+					this.revenueData[i] = revenueDataTmp.get(i);
+					this.profitData[i] = profitDataTmp.get(i);
+				}
+
+				this.minimumreven = Data.minimum(this.revenueData);
+				this.avergreve = Data.average(this.revenueData);
+				this.maximumreven = Data.maximum(this.revenueData);
+				this.stanardivreven = Data.standardDeviation(this.revenueData);
+
+				this.minprofitfit = Data.minimum(this.profitData);
+				this.avgprofit = Data.average(this.profitData);
+				this.maxprofit = Data.maximum(this.profitData);
+				this.stdprofit = Data.standardDeviation(this.profitData);
+				this.didReport = true;
+				return true;
 			}
-			sc.close();
-			this.didReport = true;
-			return true;
-		}
-		catch (FileNotFoundException e)
-		{
-			System.out.println("File not Found");
-			this.didReport = true;
-			return false;
-		}
-		finally
-		{
-			int numEntries = yearDataTmp.size();
-
-			this.yearData = new Integer[numEntries];
-			this.rankData = new Integer[numEntries];
-			this.revenueData = new Double[numEntries];
-			this.profitData = new Double[numEntries];
-
-			for (int i = 0; i < numEntries; ++i)
+			catch (FileNotFoundException e)
 			{
-				this.yearData[i] = yearDataTmp.get(i);
-				this.rankData[i] = rankDataTmp.get(i);
-				this.revenueData[i] = revenueDataTmp.get(i);
-				this.profitData[i] = profitDataTmp.get(i);
+				System.out.println("File not Found");
+				this.didReport = true;
+				return false;
 			}
-
-			this.minimumreven = Data.minimum(this.revenueData);
-			this.avergreve = Data.average(this.revenueData);
-			this.maximumreven = Data.maximum(this.revenueData);
-			this.stanardivreven = Data.standardDeviation(this.revenueData);
-
-			this.minprofitfit = Data.minimum(this.profitData);
-			this.avgprofit = Data.average(this.profitData);
-			this.maxprofit = Data.maximum(this.profitData);
-			this.stdprofit = Data.standardDeviation(this.profitData);
-
 		}
 
 	}

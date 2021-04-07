@@ -8,10 +8,11 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 
+import static org.junit.Assert.*;
 import java.io.File;
-
 import org.junit.Test;
 import reports.CompanyReport;
+import reports.DataNotProcessedException;
 
 public class CompanyReportTest
 {
@@ -46,6 +47,33 @@ public class CompanyReportTest
 				+ "Rank\n"
 				+ "Min: 294 Max: 413 Avg: 367.450 StD: 35.518", d.toString());
 		
+	}
+	@Test (expected = DataNotProcessedException.class)
+	public void dataNotProcessedException()
+	{
+		File inputFile = new File("fortune500.csv");
+		CompanyReport d = new CompanyReport(inputFile, "Witco");
+		File outputFile = new File ("output.txt");
+		d.writeReport(outputFile);
+	}
+	@Test 
+	public void fileNotFoundTest()
+	{
+		File inputFile = new File("fortune50.csv");
+		CompanyReport d = new CompanyReport(inputFile, "Witco");
+		assertFalse(d.processReport());
+	}
+	@Test
+	public void methodCTest()
+	{
+		CompanyReport z = new CompanyReport(new File("fortune500.csv"), "Witco");
+		assertEquals (z.getCompany(), "Witco");
+	}
+	@Test
+	public void getCompanyMethodTest()
+	{
+		CompanyReport z = new CompanyReport(new File("fortune500.csv"), "Witco");
+		assertEquals(z.getCompany(), "Witco");
 	}
 	
 }
