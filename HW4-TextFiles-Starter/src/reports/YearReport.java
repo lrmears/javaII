@@ -243,8 +243,9 @@ public class YearReport implements Report
 							+ "Revenue\n"
 							+ "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f\n"
 							+ "Profit\n"
-							+ "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f", this.year, this.minimumreven, this.maximumreven, this.avergreve,
-					this.stanardivreven, this.minprofitfit, this.maxprofit, this.stdprofit, this.avgprofit);
+							+ "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f", this.year,
+					this.minimumreven, this.maximumreven, this.avergreve, this.stanardivreven,
+					this.minprofitfit, this.maxprofit, this.stdprofit, this.avgprofit);
 		}
 		else
 		{
