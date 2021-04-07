@@ -6,13 +6,12 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
 import org.junit.Test;
 import reports.CompanyReport;
-import reports.YearReport;
 
 public class CompanyReportTest
 {
@@ -29,7 +28,8 @@ public class CompanyReportTest
 				+ "Rank\n"
 				+ "Min: null Max: null Avg: nul StD: nul";
 
-		assertEquals("Problem in CompanyReport basic toString format, check spelling, capitalization, spacing, and format",
+		assertEquals("Problem in CompanyReport basic toString format, check spelling, capitalization,"
+						+ "spacing, and format",
 				expected, c.toString());
 	}
 	@Test

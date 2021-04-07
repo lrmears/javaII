@@ -6,7 +6,7 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
@@ -30,6 +30,7 @@ public class YearReportTest
 		assertEquals("Problem in YearReport basic toString format, check spelling, capitalization,"
 				+ "spacing, and format", expected, y.toString());
 	}
+
 	@Test
 	public void basicYearToStringTest()
 	{
@@ -41,7 +42,7 @@ public class YearReportTest
 				+ "Min: 409.700 Max: 79106.500 Avg: 2890.625 StD: 6317.787\n"
 				+ "Profit\n"
 				+ "Min: -1097.300 Max: 4295.200 Avg: 356.229 StD: 156.707", d.toString());
-		
+
 	}
 
 }
