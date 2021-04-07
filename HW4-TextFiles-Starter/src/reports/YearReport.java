@@ -88,7 +88,11 @@ public class YearReport implements Report
 	 */
 	private int year;
 
-
+	/**
+	 * Creates new YearReport for given year; data to be read from given file.
+	 * @param inputFileIn - - File containing Fortune 500 data for this report.
+	 * @param yearIn - - Year to report Fortune 500 data.
+	 */
 	public YearReport(File inputFileIn, int yearIn)
 	{
 		this.year = yearIn;
