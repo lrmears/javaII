@@ -175,7 +175,6 @@ public class CompanyReport implements Report
                     this.profitData[i] = profitDataTmp.get(i);
                 }
                 
-	        	// ALL OF THESE LINES ERROR WHEN PASSING TO DATA
 	        	this.minimumreven = Data.minimum( this.revenueData );
 	        	this.avergreve = Data.average( this.revenueData ); 
 	        	this.maximumreven = Data.maximum( this.revenueData );
