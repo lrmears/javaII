@@ -176,13 +176,13 @@ public class CompanyReport implements Report
                 }
                 
 	        	// ALL OF THESE LINES ERROR WHEN PASSING TO DATA
-	        	this.minimumreven = Data.minimum( this.revenueData );
-	        	this.avergreve = Data.average( this.revenueData ); 
+	        	this.minimumreven = Data.minimum​( this.revenueData );
+	        	this.avergreve = Data.average​( this.revenueData ); 
 	        	this.maximumreven = Data.maximum( this.revenueData );
 	        	this.stanardivreven = Data.standardDeviation( this.revenueData ); 
                 
-	        	this.minprofit = Data.minimum( this.profitData );
-	        	this.avgprofit = Data.average( this.profitData );
+	        	this.minprofit  = Data.minimum​( this.profitData );
+	        	this.avgprofit = Data.average​( this.profitData );
 	        	this.maxprofit = Data.maximum( this.profitData );
 	        	this.stdprofit = Data.standardDeviation( this.profitData );
                 
