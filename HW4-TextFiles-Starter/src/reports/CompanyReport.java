@@ -150,18 +150,10 @@ public class CompanyReport implements Report
 				// we only care about entries for our specific company
 				if (mapping[COMPANY_NAME].equals(this.companyName))
 				{
-
 					yearDataTmp.add(Integer.parseInt(mapping[YEAR]));
-					//System.out.println(this.yearData.get(Integer.parseInt(mapping[YEAR])));
-
 					rankDataTmp.add(Integer.parseInt(mapping[RANK]));
-					//System.out.println(this.rankData.get(Integer.parseInt(mapping[RANK])));
-
 					revenueDataTmp.add(Double.parseDouble(mapping[REVENUE]));
-					//System.out.println(this.revenueData.get( Double.parseDouble(mapping[REVENUE])));
-
 					profitDataTmp.add(Double.parseDouble(mapping[PROFIT]));
-					//System.out.println(this.profitData.get(Double.parseDouble(mapping[PROFIT])));
 				}
 			}
 			sc.close();
