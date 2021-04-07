@@ -223,9 +223,9 @@ public class YearReport implements Report
     {
         return String.format("Forturne 500 Report for %d\n"
                 + "Revenue\n"
-                + "Min: %f Max: %f Avg: %f StD: %f\n"
+                + "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f\n"
                 + "Profit\n"
-                + "Min: %f Max: %f Avg: %f StD: %f", this.year, this.minimumreven, this.maximumreven, this.avergreve,
+                + "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f", this.year, this.minimumreven, this.maximumreven, this.avergreve,
                 this.stanardivreven, this.minprofitfit, this.maxprofit, this.stdprofit, this.avgprofit);
     }
 

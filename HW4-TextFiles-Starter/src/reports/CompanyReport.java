@@ -176,13 +176,13 @@ public class CompanyReport implements Report
                 }
                 
 	        	// ALL OF THESE LINES ERROR WHEN PASSING TO DATA
-	        	this.minimumreven = Data.minimum​( this.revenueData );
-	        	this.avergreve = Data.average​( this.revenueData ); 
+	        	this.minimumreven = Data.minimum( this.revenueData );
+	        	this.avergreve = Data.average( this.revenueData ); 
 	        	this.maximumreven = Data.maximum( this.revenueData );
 	        	this.stanardivreven = Data.standardDeviation( this.revenueData ); 
                 
-	        	this.minprofit  = Data.minimum​( this.profitData );
-	        	this.avgprofit = Data.average​( this.profitData );
+	        	this.minprofit  = Data.minimum( this.profitData );
+	        	this.avgprofit = Data.average( this.profitData );
 	        	this.maxprofit = Data.maximum( this.profitData );
 	        	this.stdprofit = Data.standardDeviation( this.profitData );
                 
@@ -255,11 +255,11 @@ public class CompanyReport implements Report
     {
         return String.format("Fortune 500 report for %s ranked %d times\n"
                 + "Revenue\n"
-                + "Min: %f Max: %f Avg: %f StD: %f\n"
+                + "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f\n"
                 + "Profit\n"
-                + "Min: %f Max: %f Avg: %f StD: %f\n"
+                + "Min: %.3f Max: %.3f Avg: %.3f StD: %.3f\n"
                 + "Rank\n"
-                + "Min: %d Max: %d Avg: %f StD: %f", this.companyName, this.rank, this.minimumreven,
+                + "Min: %d Max: %d Avg: %.3f StD: %.3f", this.companyName, this.rank, this.minimumreven,
                 this.maximumreven, this.avergreve, this.stanardivreven, this.minprofit, this.maxprofit, this.avgprofit, this.stdprofit, this.minrank,
                 this.maxrank, this.avgrank, this.stdrank);
     }
