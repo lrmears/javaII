@@ -113,7 +113,7 @@ public class YearReport implements Report
 	 */
 	public boolean processReport()
 	{
-		// the format of the file in terms of csv columns:
+		// Variables that store locations.
 		final int YEAR = Report.YEAR_LOC;
 		final int RANK = Report.RANK_LOC;
 		final int COMPANY_NAME = Report.COMPANY_LOC;
@@ -124,14 +124,14 @@ public class YearReport implements Report
 		ArrayList<Integer> rankDataTmp = new ArrayList<Integer>();
 		ArrayList<Double> revenueDataTmp = new ArrayList<Double>();
 		ArrayList<Double> profitDataTmp = new ArrayList<Double>();
-		
+
 		if (this.year > MAXYEAR || this.year < MINYEAR)
 		{
 			throw new YearNotFoundException();
 		}
-		else 
+		else
 		{
-			
+
 			try
 			{
 				Scanner sc = new Scanner(inputFile);
@@ -151,7 +151,7 @@ public class YearReport implements Report
 				}
 				sc.close();
 				int numEntries = yearDataTmp.size();
-				
+
 				this.yearData = new Integer[numEntries];
 				this.rankData = new Integer[numEntries];
 				this.revenueData = new Double[numEntries];

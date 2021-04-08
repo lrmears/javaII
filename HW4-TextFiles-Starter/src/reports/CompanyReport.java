@@ -128,14 +128,11 @@ public class CompanyReport implements Report
 	 */
 	public boolean processReport()
 	{
-		// Using report interface to sort things into CSV categories.
-
 		// Declaring ArrayLists to store data from the file.
 		ArrayList<Integer> yearDataTmp = new ArrayList<Integer>();
 		ArrayList<Integer> rankDataTmp = new ArrayList<Integer>();
 		ArrayList<Double> revenueDataTmp = new ArrayList<Double>();
 		ArrayList<Double> profitDataTmp = new ArrayList<Double>();
-
 
 		try
 		{
