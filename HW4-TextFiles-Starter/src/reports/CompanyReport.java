@@ -128,13 +128,9 @@ public class CompanyReport implements Report
 	 */
 	public boolean processReport()
 	{
-		// the format of the file in terms of csv columns:
-		final int YEAR = Report.YEAR_LOC;
-		final int RANK = Report.RANK_LOC;
-		final int COMPANY_NAME = Report.COMPANY_LOC;
-		final int REVENUE = Report.REVENUE_LOC;
-		final int PROFIT = Report.PROFIT_LOC;
+		// Using report interface to sort things into CSV categories.
 
+		// Declaring ArrayLists to store data from the file.
 		ArrayList<Integer> yearDataTmp = new ArrayList<Integer>();
 		ArrayList<Integer> rankDataTmp = new ArrayList<Integer>();
 		ArrayList<Double> revenueDataTmp = new ArrayList<Double>();
@@ -144,17 +140,18 @@ public class CompanyReport implements Report
 		try
 		{
 			Scanner sc = new Scanner(inputFile);
+			// Loops through this block while there is content to read.
 			while (sc.hasNext())
 			{
 				String[] mapping = sc.nextLine().split(",");
 
 				// Use entries that match the company name.
-				if (mapping[COMPANY_NAME].equals(this.companyName))
+				if (mapping[Report.COMPANY_LOC].equals(this.companyName))
 				{
-					yearDataTmp.add(Integer.parseInt(mapping[YEAR]));
-					rankDataTmp.add(Integer.parseInt(mapping[RANK]));
-					revenueDataTmp.add(Double.parseDouble(mapping[REVENUE]));
-					profitDataTmp.add(Double.parseDouble(mapping[PROFIT]));
+					yearDataTmp.add(Integer.parseInt(mapping[Report.YEAR_LOC]));
+					rankDataTmp.add(Integer.parseInt(mapping[Report.RANK_LOC]));
+					revenueDataTmp.add(Double.parseDouble(mapping[Report.REVENUE_LOC]));
+					profitDataTmp.add(Double.parseDouble(mapping[Report.PROFIT_LOC]));
 				}
 			}
 			sc.close();
