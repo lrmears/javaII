@@ -26,10 +26,10 @@ public class Data
 	 */
 	public static <E extends Comparable<E>> E minimum(E[] data)
 	{
-		// Declares minimum value to first element in array.
+		E minValue;
 		if (data.length > 0)
 		{
-			E minValue = data[0];
+			minValue = data[0];
 			for (int i = 1; i < data.length; i++)
 			{
 				if (data[i] == null)
@@ -42,13 +42,12 @@ public class Data
 					minValue = data[i];
 				}
 			}
-			return minValue;
 		}
 		else
 		{
-			E minValue = null;
-			return minValue;
+			minValue = null;
 		}
+		return minValue;
 	}
 
 	/**

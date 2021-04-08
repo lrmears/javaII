@@ -144,14 +144,11 @@ public class CompanyReport implements Report
 		try
 		{
 			Scanner sc = new Scanner(inputFile);
-			// re-initialize all of our arraylists
-			// no worry about misformatted files, so as long as
-			// there is data left to read, it's a valid entry
 			while (sc.hasNext())
 			{
 				String[] mapping = sc.nextLine().split(",");
 
-				// we only care about entries for our specific company
+				// Use entries that match the company name.
 				if (mapping[COMPANY_NAME].equals(this.companyName))
 				{
 					yearDataTmp.add(Integer.parseInt(mapping[YEAR]));
