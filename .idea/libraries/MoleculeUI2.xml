@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MoleculeUI">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/HW5 - Molecule Starter/lib/MoleculeUI.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
