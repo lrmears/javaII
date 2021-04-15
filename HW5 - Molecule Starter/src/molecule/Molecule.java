@@ -34,6 +34,18 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	private int weight;
 	/**
+	 * A global sum variable.
+	 */
+	private int sum;
+	/**
+	 * A global value for a given portion varaible.
+	 */
+	private int value;
+	/**
+	 * A global sequence string.
+	 */
+	private String sequence;
+	/**
 	 * Creates a new Molecule made up of the H, C, and O atoms in the configuration specified by sequenceIn.
 	 * @param sequenceIn - The sequence of atoms for this Molecule.
 	 * @throws InvalidAtomException - if any non C, H, O atom exists in sequenceIn
@@ -42,7 +54,10 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public Molecule(String sequenceIn)
 	{
+		//if (something) then throw atom error 
 		
+		// if (something) then throw unmatch parenthis error, just unsure how to write the conditions
+		this.sequence = sequenceIn;
 	}
 	
 
@@ -73,7 +88,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public int getWeight()
 	{
-		return 0;
+		return weight;
 	}
 	
 	/**
@@ -94,7 +109,8 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 
 	/**
 	 * 	Static utility method to return the atomic weight of a given atom.
-	 *  Supported atoms are ATOMIC_WEIGHT_CARBON (C), ATOMIC_WEIGHT_HYDROGEN (H), and ATOMIC_WEIGHT_OXYGEN (O), and the value of the atom parameter
+	 *  Supported atoms are ATOMIC_WEIGHT_CARBON (C), ATOMIC_WEIGHT_HYDROGEN (H), and ATOMIC_WEIGHT_OXYGEN (O), 
+	 *  and the value of the atom parameter
 	 *   corresponds to the single letter abbreviation for these atoms (case insensitive).
 	 *  Atomic weights are given in their nearest whole number:
 	 *   ATOMIC_WEIGHT_HYDROGEN - 1 
@@ -107,9 +123,9 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	public static int atomWeight(char atom) throws InvalidAtomException
 	{
 		int weight = 0;
-		if (atom == 'H' || atom == 'h')
+		if (atom == '(')
 		{
-			weight = ATOMIC_WEIGHT_HYDROGEN;
+			weight = -1;
 		}
 		// else if is temporary haven't deliberated if its necciscary
 		else if (atom == 'C' || atom == 'c')
@@ -120,9 +136,9 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 		{
 			weight = ATOMIC_WEIGHT_OXYGEN;
 		}
-		else if (atom == '(')
+		else if (atom == 'H' || atom == 'h')
 		{
-			weight = -1;
+			weight = ATOMIC_WEIGHT_HYDROGEN;
 		}
 		else
 		{
