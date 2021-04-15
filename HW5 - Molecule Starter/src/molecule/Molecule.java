@@ -10,28 +10,29 @@ import molecule.exceptions.InvalidAtomException;
 
 /**
  * Objects of the Molecule class represent a single chemical molecule made up of any number
- *  of hydrogen, carbon, and oxygen atoms.
+ *  of ATOMIC_WEIGHT_HYDROGEN, ATOMIC_WEIGHT_CARBON, and ATOMIC_WEIGHT_OXYGEN atoms.
  *  The class provides functionality to compute the atomic weight of the molecule.
  *  @author jacobsand, lmears
  */
 public class Molecule implements Comparable<Molecule>, Cloneable
 {
+
+	/**
+	 * Variable for ATOMIC_WEIGHT_HYDROGEN weight.
+	 */
+	private static final int ATOMIC_WEIGHT_HYDROGEN = 1;
+	/**
+	 * Variable for ATOMIC_WEIGHT_CARBON weight.
+	 */
+	private static final int ATOMIC_WEIGHT_CARBON = 12;
+	/**
+	 * Variable for ATOMIC_WEIGHT_OXYGEN weight.
+	 */
+	private static final int ATOMIC_WEIGHT_OXYGEN = 16;
 	/**
 	 * A default value for tracking the weight of an atom.
 	 */
 	private int weight;
-	/**
-	 * Variable for hydrogen weight.
-	 */
-	private static final int HYDROGEN = 1;
-	/**
-	 * Variable for carbon weight.
-	 */
-	private static final int CARBON = 12;
-	/**
-	 * Variable for oxygen weight.
-	 */
-	private static final int OXYGEN = 16;
 	/**
 	 * Creates a new Molecule made up of the H, C, and O atoms in the configuration specified by sequenceIn.
 	 * @param sequenceIn - The sequence of atoms for this Molecule.
@@ -93,12 +94,12 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 
 	/**
 	 * 	Static utility method to return the atomic weight of a given atom.
-	 *  Supported atoms are Carbon (C), Hydrogen (H), and Oxygen (O), and the value of the atom parameter
+	 *  Supported atoms are ATOMIC_WEIGHT_CARBON (C), ATOMIC_WEIGHT_HYDROGEN (H), and ATOMIC_WEIGHT_OXYGEN (O), and the value of the atom parameter
 	 *   corresponds to the single letter abbreviation for these atoms (case insensitive).
 	 *  Atomic weights are given in their nearest whole number:
-	 *   Hydrogen - 1 
-	 *   Carbon - 12 
-	 *   Oxygen - 16
+	 *   ATOMIC_WEIGHT_HYDROGEN - 1 
+	 *   ATOMIC_WEIGHT_CARBON - 12 
+	 *   ATOMIC_WEIGHT_OXYGEN - 16
 	 * @param atom - Character for atom abbreviation
 	 * @return Atomic weight of passed atom
 	 * @throws molecule.exceptions.InvalidAtomException - Thrown if an unsupported atom is passed
@@ -108,16 +109,16 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 		int weight = 0;
 		if (atom == 'H' || atom == 'h')
 		{
-			weight = HYDROGEN;
+			weight = ATOMIC_WEIGHT_HYDROGEN;
 		}
 		// else if is temporary haven't deliberated if its necciscary
 		else if (atom == 'C' || atom == 'c')
 		{
-			weight = CARBON;
+			weight = ATOMIC_WEIGHT_CARBON;
 		}
 		else if (atom == 'O' || atom == 'o')
 		{
-			weight = OXYGEN;
+			weight = ATOMIC_WEIGHT_OXYGEN;
 		}
 		else if (atom == '(')
 		{
