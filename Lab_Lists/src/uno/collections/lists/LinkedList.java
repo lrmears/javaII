@@ -124,9 +124,16 @@ public class LinkedList<E> implements List<E>
 	 */
 	public void add(int index, E item) throws IndexOutOfBoundsException
 	{
-		if (index < 0 || index > this.numElements)
+		try
 		{
-			throw new IndexOutOfBoundsException("Index " + index + " out of bounds.");
+			if (index < 0 || index >= this.numElements)
+			{
+				throw new IndexOutOfBoundsException("Index " + index + " out of bounds.");
+			}
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			System.out.println(e.getMessage());
 		}
 		if (index == 0 && !isEmpty())
 		{
@@ -158,9 +165,16 @@ public class LinkedList<E> implements List<E>
 	 */
 	public E set(int index, E item) throws IndexOutOfBoundsException
 	{
-		if (index < 0 || index > this.numElements)
+		try
 		{
-			throw new IndexOutOfBoundsException("Index " + index + " out of bounds.");
+			if (index < 0 || index >= this.numElements)
+			{
+				throw new IndexOutOfBoundsException("Index " + index + " out of bounds.");
+			}
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			System.out.println(e.getMessage());
 		}
 		ListNode<E> temp = getNode(index);
 		E data = temp.getData();
@@ -177,9 +191,16 @@ public class LinkedList<E> implements List<E>
 	 */
 	public E remove(int index) throws IndexOutOfBoundsException
 	{
-		if (index < 0 || index > this.numElements)
+		try
 		{
-			throw new IndexOutOfBoundsException("Index " + index + " out of bounds.");
+			if (index < 0 || index >= this.numElements)
+			{
+				throw new IndexOutOfBoundsException("Index " + index + " out of bounds.");
+			}
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			System.out.println(e.getMessage());
 		}
 		E data;
 
@@ -217,9 +238,16 @@ public class LinkedList<E> implements List<E>
 	 */
 	public E get(int index) throws IndexOutOfBoundsException
 	{
-		if (index < 0 || index > this.numElements)
+		try
 		{
-			throw new IndexOutOfBoundsException("Index " + index + " out of bounds.");
+			if (index < 0 || index >= this.numElements)
+			{
+				throw new IndexOutOfBoundsException("Index " + index + " out of bounds.");
+			}
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			System.out.println(e.getMessage());
 		}
 		return getNode(index).getData();
 	}
@@ -326,12 +354,17 @@ public class LinkedList<E> implements List<E>
 		{
 			return null;
 		}
-		E[] newArray = (E[]) new Object[numElements];
-		int index = 0;
-		for (ListNode<E> x = firstNode; x != null; x = x.getNext())
+		else
 		{
-			newArray[index++] = (E) x;
+			E[] newArray = (E[]) new Object[numElements];
+			ListNode<E> currentNode = firstNode;
+			for (int i = 0; i < numElements; i++)
+			{
+				newArray[i] = (E) currentNode.getData();
+				currentNode = currentNode.getNext();
+			}
+			return newArray;
 		}
-		return newArray;
+
 	}
 }

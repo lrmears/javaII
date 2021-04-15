@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/HW5 - Molecule Starter/HW5 - Molecule Starter.iml" filepath="$PROJECT_DIR$/HW5 - Molecule Starter/HW5 - Molecule Starter.iml" />
       <module fileurl="file://$USER_HOME$/Documents/Java II/Lab-Inheritance-Starter/Lab-Inheritance-Starter.iml" filepath="$USER_HOME$/Documents/Java II/Lab-Inheritance-Starter/Lab-Inheritance-Starter.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab_Lists/Lab_Lists.iml" filepath="$PROJECT_DIR$/Lab_Lists/Lab_Lists.iml" />
       <module fileurl="file://$USER_HOME$/Documents/Java II/Lab_MorseEncoder/Lab_MorseEncoder.iml" filepath="$USER_HOME$/Documents/Java II/Lab_MorseEncoder/Lab_MorseEncoder.iml" />

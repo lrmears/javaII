@@ -71,6 +71,7 @@ public class SortedLinkedList<E extends Comparable<E>> extends LinkedList<E>
 	 * @throws UnsupportedOperationException - is thrown any time this method gets called as it would
 	 *                                       violate sorted ordering requirements of SortedLinkedList.
 	 */
+	@Override
 	public void add(int index, E item) throws UnsupportedOperationException
 	{
 		try
@@ -92,6 +93,7 @@ public class SortedLinkedList<E extends Comparable<E>> extends LinkedList<E>
 	 * @throws UnsupportedOperationException - is thrown any time this method gets called as it would
 	 *                                       violate sorted ordering requirements of SortedLinkedList.
 	 */
+	@Override
 	public E set(int index, E item) throws UnsupportedOperationException
 	{
 		try
