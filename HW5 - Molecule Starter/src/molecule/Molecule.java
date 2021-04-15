@@ -1,7 +1,7 @@
 // COURSE: CSCI1620
-// TERM: SPRING 2020
+// TERM: SPRING 2021
 // 
-// NAME: Name
+// NAME: Jacob Sand, Logan Mears
 // RESOURCES: No outside resources were used in the creation of this enum.
 
 package molecule;
@@ -12,7 +12,7 @@ import molecule.exceptions.InvalidAtomException;
  * Objects of the Molecule class represent a single chemical molecule made up of any number
  *  of hydrogen, carbon, and oxygen atoms.
  *  The class provides functionality to compute the atomic weight of the molecule.
- *  @author YOUR NAME
+ *  @author jacobsand, lmears
  */
 public class Molecule implements Comparable<Molecule>, Cloneable
 {
@@ -20,6 +20,18 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 * A default value for tracking the weight of an atom.
 	 */
 	private int weight;
+	/**
+	 * Variable for hydrogen weight.
+	 */
+	private static final int HYDROGEN = 1;
+	/**
+	 * Variable for carbon weight.
+	 */
+	private static final int CARBON = 12;
+	/**
+	 * Variable for oxygen weight.
+	 */
+	private static final int OXYGEN = 16;
 	/**
 	 * Creates a new Molecule made up of the H, C, and O atoms in the configuration specified by sequenceIn.
 	 * @param sequenceIn - The sequence of atoms for this Molecule.
@@ -96,16 +108,16 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 		int weight = 0;
 		if (atom == 'H' || atom == 'h')
 		{
-			weight = 1;
+			weight = HYDROGEN;
 		}
 		// else if is temporary haven't deliberated if its necciscary
 		else if (atom == 'C' || atom == 'c')
 		{
-			weight = 12;
+			weight = CARBON;
 		}
 		else if (atom == 'O' || atom == 'o')
 		{
-			weight = 16;
+			weight = OXYGEN;
 		}
 		else if (atom == '(')
 		{
