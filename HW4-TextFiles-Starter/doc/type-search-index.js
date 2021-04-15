@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"reports","l":"CompanyReport"},{"p":"tests","l":"CompanyReportTest"},{"p":"analytics","l":"Data"},{"p":"reports","l":"DataNotProcessedException"},{"p":"fortuneapplication","l":"FortuneApplication"},{"p":"reports","l":"Report"},{"p":"reports","l":"YearNotFoundException"},{"p":"reports","l":"YearReport"},{"p":"tests","l":"YearReportTest"}]

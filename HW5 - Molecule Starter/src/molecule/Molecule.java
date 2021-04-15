@@ -17,6 +17,10 @@ import molecule.exceptions.InvalidAtomException;
 public class Molecule implements Comparable<Molecule>, Cloneable
 {
 	/**
+	 * A default value for tracking the weight of an atom.
+	 */
+	private int weight;
+	/**
 	 * Creates a new Molecule made up of the H, C, and O atoms in the configuration specified by sequenceIn.
 	 * @param sequenceIn - The sequence of atoms for this Molecule.
 	 * @throws InvalidAtomException - if any non C, H, O atom exists in sequenceIn
@@ -50,7 +54,8 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	}
 	
 	/**
-	 * Retrieves this Molecule's weight, which is calculated based on the Molecule's sequence per the algorithm specified.
+	 * Retrieves this Molecule's weight, which is calculated based on the Molecule's sequence 
+	 * per the algorithm specified.
 	 * @return Weight of the Molecule.
 	 */
 	public int getWeight()
@@ -88,7 +93,30 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public static int atomWeight(char atom) throws InvalidAtomException
 	{
-		return 0;
+		int weight = 0;
+		if (atom == 'H' || atom == 'h')
+		{
+			weight = 1;
+		}
+		// else if is temporary haven't deliberated if its necciscary
+		else if (atom == 'C' || atom == 'c')
+		{
+			weight = 12;
+		}
+		else if (atom == 'O' || atom == 'o')
+		{
+			weight = 16;
+		}
+		else if (atom == '(')
+		{
+			weight = -1;
+		}
+		else
+		{
+			throw new InvalidAtomException(atom);
+		}
+		
+		return weight;
 	}
 
 	/**
