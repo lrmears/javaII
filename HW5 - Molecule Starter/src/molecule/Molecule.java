@@ -113,9 +113,9 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 *  and the value of the atom parameter
 	 *   corresponds to the single letter abbreviation for these atoms (case insensitive).
 	 *  Atomic weights are given in their nearest whole number:
-	 *   ATOMIC_WEIGHT_HYDROGEN - 1 
-	 *   ATOMIC_WEIGHT_CARBON - 12 
-	 *   ATOMIC_WEIGHT_OXYGEN - 16
+	 *   HYDROGEN - 1 
+	 *   CARBON - 12 
+	 *   OXYGEN - 16
 	 * @param atom - Character for atom abbreviation
 	 * @return Atomic weight of passed atom
 	 * @throws molecule.exceptions.InvalidAtomException - Thrown if an unsupported atom is passed
