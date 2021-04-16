@@ -38,7 +38,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	private int sum;
 	/**
-	 * A global value for a given portion varaible.
+	 * A global value for a given portion variable.
 	 */
 	private int value;
 	/**
@@ -54,7 +54,10 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public Molecule(String sequenceIn)
 	{
-		//if (something) then throw atom error 
+		//if (!sequenceIn.matches("[HhCcOo]+")) : Currently under development
+		//{
+		//	throw new InvalidAtomException;
+		//}
 		
 		// if (something) then throw unmatch parenthis error, just unsure how to write the conditions
 		this.sequence = sequenceIn;
@@ -122,29 +125,24 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public static int atomWeight(char atom) throws InvalidAtomException
 	{
-		int weight = 0;
-		if (atom == '(')
+		int weight = -1;
+		switch (atom)
 		{
-			weight = -1;
+			case 'C':
+			case 'c':
+				weight = ATOMIC_WEIGHT_CARBON;
+				break;
+			case 'O':
+			case 'o':
+				weight = ATOMIC_WEIGHT_OXYGEN;
+				break;
+			case 'H':
+			case 'h':
+				weight = ATOMIC_WEIGHT_HYDROGEN;
+				break;
+			default:
+				throw new InvalidAtomException(atom);
 		}
-		// else if is temporary haven't deliberated if its necessary
-		else if (atom == 'C' || atom == 'c')
-		{
-			weight = ATOMIC_WEIGHT_CARBON;
-		}
-		else if (atom == 'O' || atom == 'o')
-		{
-			weight = ATOMIC_WEIGHT_OXYGEN;
-		}
-		else if (atom == 'H' || atom == 'h')
-		{
-			weight = ATOMIC_WEIGHT_HYDROGEN;
-		}
-		else
-		{
-			throw new InvalidAtomException(atom);
-		}
-		
 		return weight;
 	}
 
