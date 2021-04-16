@@ -85,7 +85,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	private int parseSequence(String sequence) throws InvalidAtomException, InvalidSequenceException
 	{
-		Stack<Integer> M = new Stack<Integer>();
+		Stack<Integer> moleculeCounter = new Stack<Integer>();
 		
 		String seq = "(" + sequence + ")";
 		
@@ -93,6 +93,25 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 
 		while (index < sequence.length())
 		{
+			char currentEval = sequence.charAt(index);
+			if (currentEval == '(')
+			{
+				moleculeCounter.push(-1);
+			}
+			else if (currentEval == ')')
+			{
+				
+			}
+			else if (Character.isDigit(currentEval))
+			{
+				int num = /*TODO: convert consecutive numbers to an int*/ 0;
+				int poppedValue = moleculeCounter.pop();
+				
+			}
+			else
+			{
+				moleculeCounter.push(Molecule.atomWeight(currentEval));
+			}
 			index++;
 		}
 		return 0;
