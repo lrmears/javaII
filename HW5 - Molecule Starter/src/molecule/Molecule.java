@@ -6,7 +6,10 @@
 
 package molecule;
 
+import java.util.Stack;
+
 import molecule.exceptions.InvalidAtomException;
+import molecule.exceptions.InvalidSequenceException;
 
 /**
  * Objects of the Molecule class represent a single chemical molecule made up of any number
@@ -73,6 +76,23 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	public void setSequence(String sequenceIn)
 	{
 		
+	}
+	
+	/**
+	 * A. 
+	 * @param sequence A.
+	 * @return
+	 */
+	private int parseSequence(String sequence) throws InvalidAtomException, InvalidSequenceException
+	{
+		Stack<Integer> M = new Stack<Integer>();
+		String seq = "(" + sequence + ")";
+
+		for ()
+		{
+			
+		}
+		return 0;
 	}
 	
 	/**
