@@ -127,7 +127,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 		{
 			weight = -1;
 		}
-		// else if is temporary haven't deliberated if its necciscary
+		// else if is temporary haven't deliberated if its necessary
 		else if (atom == 'C' || atom == 'c')
 		{
 			weight = ATOMIC_WEIGHT_CARBON;
