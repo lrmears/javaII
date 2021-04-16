@@ -78,7 +78,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public String getSequence()
 	{
-		return null;
+		return sequence;
 	}
 	
 	/**
