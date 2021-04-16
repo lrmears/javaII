@@ -106,6 +106,8 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 			{
 				int num = /*TODO: convert consecutive numbers to an int*/ 0;
 				int poppedValue = moleculeCounter.pop();
+				int pushMC = poppedValue * num;
+				moleculeCounter.push(pushMC);
 				
 			}
 			else
