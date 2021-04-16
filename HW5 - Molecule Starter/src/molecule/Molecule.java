@@ -86,11 +86,14 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	private int parseSequence(String sequence) throws InvalidAtomException, InvalidSequenceException
 	{
 		Stack<Integer> M = new Stack<Integer>();
+		
 		String seq = "(" + sequence + ")";
+		
+		int index = 0;
 
-		for ()
+		while (index < sequence.length())
 		{
-			
+			index++;
 		}
 		return 0;
 	}
