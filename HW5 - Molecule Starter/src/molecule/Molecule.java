@@ -148,7 +148,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
         			top_weight = pop off stack
         			push (top_weight * value) onto stack
 				 */
-				int num = /*Todo: convert consecutive numbers to an int*/ 0;
+				int num = Integer.parseInt(sequence); /*Todo: convert consecutive numbers to an int*/
 				int poppedValue = moleculeCounter.pop();
 				int pushMC = poppedValue * num;
 				moleculeCounter.push(pushMC);
