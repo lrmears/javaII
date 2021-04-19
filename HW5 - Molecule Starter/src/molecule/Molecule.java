@@ -126,11 +126,29 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 			}
 			else if (currentEval == ')')
 			{
-
+				this.sum = 0;
+				while (currentEval != -1)
+				{
+					value = moleculeCounter.pop();
+				}
+				if (value == -1)
+				{
+					sum = sum + value;
+				}
+				else 
+				{
+					moleculeCounter.push(sum);
+				}
 			}
 			else if (Character.isDigit(currentEval))
 			{
-				int num = /*TODO: convert consecutive numbers to an int*/ 0;
+				/*
+					else if character is digit (0-9):
+        			value = read all consecutive digits (if any)
+        			top_weight = pop off stack
+        			push (top_weight * value) onto stack
+				 */
+				int num = /*Todo: convert consecutive numbers to an int*/ 0;
 				int poppedValue = moleculeCounter.pop();
 				int pushMC = poppedValue * num;
 				moleculeCounter.push(pushMC);
