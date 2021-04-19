@@ -129,11 +129,11 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 				this.sum = 0;
 				while (currentEval != -1)
 				{
-					value = moleculeCounter.pop();
+					this.value = moleculeCounter.pop();
 				}
 				if (value == -1)
 				{
-					sum = sum + value;
+					this.sum = sum + value;
 				}
 				else 
 				{
