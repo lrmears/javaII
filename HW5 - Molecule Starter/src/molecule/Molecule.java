@@ -61,8 +61,8 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public Molecule(String sequenceIn)
 	{
+		this.weight = parseSequence(sequenceIn);
 		this.sequence = sequenceIn;
-		//maybe do find a way to have setSequence string be the global sequence or something..
 	}
 
 
@@ -160,7 +160,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public String getSequence()
 	{
-		return sequence;
+		return this.sequence;
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public int getWeight()
 	{
-		return weight;
+		return this.weight;
 	}
 
 	/**
@@ -248,7 +248,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 		} 
 		else if (this.value == other.value)
 		{
-			compareVal = 0;
+			compareVal = 0;	
 		}
 		return compareVal;
 	}
