@@ -240,7 +240,16 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public int compareTo(Molecule other)
 	{
-		return 0;
+		int compareVal = 1;
+		if (this.value < o.value)
+		{
+			compareVal = -1;
+		} 
+		else if (this.value == o.value)
+		{
+			compareVal = 0;
+		}
+		return compareVal;
 	}
 
 	/**
