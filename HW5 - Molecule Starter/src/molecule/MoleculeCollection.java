@@ -40,7 +40,7 @@ public class MoleculeCollection
 	 */
 	public MoleculeCollection(LinkedList<Molecule> moleculeListIn)
 	{
-		//shoulf just be a more complex version of the previous method
+		//should just be a more complex version of the previous method
 	}
 
 	/**
