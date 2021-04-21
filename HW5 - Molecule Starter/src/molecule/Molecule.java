@@ -127,18 +127,32 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 			else if (currentEval == ')')
 			{
 				this.sum = 0;
-				while (currentEval != -1)
+				int poppedValue = 0;
+				while (poppedValue != -1)
+				{
+					poppedValue = moleculeCounter.pop();
+					if (poppedValue == -1)
+					{
+						moleculeCounter.push(sum);
+					}
+					else
+					{
+						
+					}
+				}
+				/*while (currentEval != -1)
 				{
 					this.value = moleculeCounter.pop();
-				}
-				if (value == -1)
-				{
-					this.sum = sum + value;
-				}
-				else 
-				{
-					moleculeCounter.push(sum);
-				}
+					moleculeCounter.pop();
+					if (value != -1)
+					{
+						this.sum = this.sum + this.value;
+					}
+					else 
+					{
+						moleculeCounter.push(sum);
+					}
+				}*/
 			}
 			else if (Character.isDigit(currentEval))
 			{
@@ -149,8 +163,8 @@ public class Molecule implements Comparable<Molecule>, Cloneable
         			push (top_weight * value) onto stack
 				 */
 				int num = Integer.parseInt(sequence); /*Todo: convert consecutive numbers to an int*/
-				int poppedValue = moleculeCounter.pop();
-				int pushMC = poppedValue * num;
+				int poppedVal = moleculeCounter.pop();
+				int pushMC = poppedVal * num;
 				moleculeCounter.push(pushMC);
 
 			}
