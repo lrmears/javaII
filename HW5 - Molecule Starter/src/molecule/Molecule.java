@@ -163,14 +163,15 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 			}
 			index++;
 		}
-		/*int finalPop = moleculeCounter.pop();
-		if (peek for a value )
+		int finalPop = moleculeCounter.pop();
+		
+		if (!moleculeCounter.empty())
 		{
-			//throw an exception, whole area is a todo
+			throw new InvalidSequenceException();
 		}
 		
-		return finalPop;*/
-		return 0;
+		return finalPop;
+
 	}
 
 	/**
