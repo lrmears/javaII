@@ -23,10 +23,15 @@ public class MoleculeCollection
 {
 	//create a bunch / a few instanced variables to keep an eye / track of the last nodes
 	/**
+	 * Creates a linked list type Molecule.
+	 */
+	private LinkedList<Molecule> molecules;
+	/**
 	 * Creates a new MoleculeCollection containing no Molecules yet.
 	 */
 	public MoleculeCollection()
 	{
+		this.molecules = new LinkedList<Molecule>();
 		//create a new linked list for the over all collection?
 	}
 
@@ -54,7 +59,14 @@ public class MoleculeCollection
 	 */
 	public void addMolecule(int index, Molecule add)
 	{
-		//add a molecule onto the index
+		if (index < 0 || index >= molecules.size())
+		{
+			this.molecules.add((Molecule) add.clone());
+		}
+		else
+		{
+			this.molecules.add(index, (Molecule) add.clone());
+		}
 	}
 
 	/**
