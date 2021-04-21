@@ -21,12 +21,13 @@ import molecule.exceptions.InvalidSequenceException;
  */
 public class MoleculeCollection
 {
+	//create a bunch / a few instanced variables to keep an eye / track of the last nodes
 	/**
 	 * Creates a new MoleculeCollection containing no Molecules yet.
 	 */
 	public MoleculeCollection()
 	{
-
+		//create a new linked list for the over all collection?
 	}
 
 	/**
@@ -39,7 +40,7 @@ public class MoleculeCollection
 	 */
 	public MoleculeCollection(LinkedList<Molecule> moleculeListIn)
 	{
-
+		//shoulf just be a more complex version of the previous method
 	}
 
 	/**
@@ -53,7 +54,7 @@ public class MoleculeCollection
 	 */
 	public void addMolecule(int index, Molecule add)
 	{
-
+		//add a molecule onto the index
 	}
 
 	/**
@@ -63,7 +64,7 @@ public class MoleculeCollection
 	 */
 	public void sort()
 	{
-
+		//sort the linked list in atomic weight order, if they are the same they should be at their original spot then
 	}
 
 	/**
@@ -73,6 +74,7 @@ public class MoleculeCollection
 	 */
 	public int moleculeWeights()
 	{
+		//sums up all the weights per the previous class i presume
 		return 0;
 	}
 
@@ -84,6 +86,7 @@ public class MoleculeCollection
 	 */
 	public LinkedList<Molecule> getMoleculeList()
 	{
+		//makes a deep copy of all the molecules in this collection
 		return null;
 	}
 
@@ -101,7 +104,7 @@ public class MoleculeCollection
 	 */
 	public void changeSequence(int index, String newSequence) throws InvalidAtomException, InvalidSequenceException
 	{
-
+		//modifies existing molecules, appears to be the hardest one to create, i assume
 	}
 
 }
