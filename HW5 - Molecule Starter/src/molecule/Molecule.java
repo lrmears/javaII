@@ -76,6 +76,8 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 *
 	 * @return finalPop - an int with the final Value
 	 * @param sequenceIn - instanced/local variable
+	 * @throws InvalidAtomException     - if any non C, H, O atom exists in sequenceIn
+	 * @throws InvalidSequenceException - if unmatched parentheses exist in sequenceI
 	 */
 	private int parseSequence(String sequenceIn) throws InvalidAtomException, InvalidSequenceException
 	{
