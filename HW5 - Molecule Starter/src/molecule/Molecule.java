@@ -147,6 +147,8 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 				
 				while ((index + 1) < sequence.length() && Character.isDigit(sequence.charAt(index + 1)))
 				{
+					digits += sequence.charAt(index + 1);
+					index++;
 					
 				}
 				int num = Integer.parseInt(sequence); /*Todo: convert consecutive numbers to an int*/
