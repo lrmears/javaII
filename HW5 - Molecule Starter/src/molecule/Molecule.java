@@ -77,6 +77,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	{
 		parseSequence(sequenceIn);
 		// do not need to throw the sequence exception b/c its taken care of in the parseSeuqence method
+		// maybe we do the parse call with this.sequence??
 	}
 
 	/**
