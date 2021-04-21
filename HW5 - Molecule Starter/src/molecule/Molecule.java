@@ -126,8 +126,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 			}
 			else if (currentEval == ')')
 			{
-				this.sum = 0;
-				int poppedValue = 0;
+				int poppedValue = 0, stackSum = 0;
 				while (poppedValue != -1)
 				{
 					poppedValue = moleculeCounter.pop();
@@ -137,22 +136,10 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 					}
 					else
 					{
-						
+						stackSum += poppedValue;
 					}
 				}
-				/*while (currentEval != -1)
-				{
-					this.value = moleculeCounter.pop();
-					moleculeCounter.pop();
-					if (value != -1)
-					{
-						this.sum = this.sum + this.value;
-					}
-					else 
-					{
-						moleculeCounter.push(sum);
-					}
-				}*/
+
 			}
 			else if (Character.isDigit(currentEval))
 			{
