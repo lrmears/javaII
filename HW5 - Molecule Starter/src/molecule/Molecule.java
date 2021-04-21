@@ -246,7 +246,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 		return 0;
 	}
 
-	/**	
+	/**
 	 * Returns a deep copy of the Molecule.
 	 * The reference returned should refer to a completely separate molecule with no direct or
 	 * indirect aliasing of any instance data in the original Molecule.
