@@ -11,6 +11,7 @@ import java.util.Stack;
 import molecule.exceptions.InvalidAtomException;
 import molecule.exceptions.InvalidSequenceException;
 
+
 /**
  * Objects of the Molecule class represent a single chemical molecule made up of any number
  * of ATOMIC_WEIGHT_HYDROGEN, ATOMIC_WEIGHT_CARBON, and ATOMIC_WEIGHT_OXYGEN atoms.
@@ -79,7 +80,8 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public void setSequence(String sequenceIn)
 	{
-
+		parseSequence(sequenceIn);
+		// do not need to throw the sequence exception b/c its taken care of in the parseSeuqence method
 	}
 
 	/**
@@ -244,7 +246,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 		return 0;
 	}
 
-	/**
+	/**	
 	 * Returns a deep copy of the Molecule.
 	 * The reference returned should refer to a completely separate molecule with no direct or
 	 * indirect aliasing of any instance data in the original Molecule.
@@ -255,7 +257,9 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	@Override
 	public Object clone()
 	{
-		return null;
+		Molecule cloned = (Molecule) super.clone();
+		cloned.sequence = (Molecule) setSequence.clone();
+		return cloned;
 	}
 
 }
