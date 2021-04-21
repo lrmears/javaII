@@ -61,12 +61,6 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public Molecule(String sequenceIn)
 	{
-		//if (!sequenceIn.matches("[HhCcOo]+")) : Currently under development
-		//{
-		//	throw new InvalidAtomException;
-		//}
-
-		// if (something) then throw unmatch parenthis error, just unsure how to write the conditions
 		this.sequence = sequenceIn;
 	}
 
