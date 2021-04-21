@@ -240,11 +240,11 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	{
 		// the this.value used in the comparison is a placeholder
 		int compareVal = 1;
-		if (this.value < other.value)
+		if (this.weight < other.getWeight())
 		{
 			compareVal = -1;
 		} 
-		else if (this.value == other.value)
+		else if (this.weight == other.getWeight())
 		{
 			compareVal = 0;	
 		}
@@ -263,7 +263,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	public Object clone()
 	{
 		Molecule cloned = (Molecule) super.clone();
-		cloned.sequence = (Molecule) setSequence.clone();
+		cloned.setSequence(this.sequence);
 		return cloned;
 	}
 
