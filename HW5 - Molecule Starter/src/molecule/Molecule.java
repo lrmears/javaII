@@ -97,9 +97,9 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 
 		int index = 0;
 
-		while (index < sequence.length())
+		while (index < seq.length())
 		{
-			char currentEval = sequence.charAt(index);
+			char currentEval = seq.charAt(index);
 			if (currentEval == '(')
 			{
 				moleculeCounter.push(-1);
@@ -125,9 +125,9 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 			{
 				String digits = "" + currentEval;
 				
-				while ((index + 1) < sequence.length() && Character.isDigit(sequence.charAt(index + 1)))
+				while ((index + 1) < seq.length() && Character.isDigit(seq.charAt(index + 1)))
 				{
-					digits += sequence.charAt(index + 1);
+					digits += seq.charAt(index + 1);
 					index++;
 					
 				}
