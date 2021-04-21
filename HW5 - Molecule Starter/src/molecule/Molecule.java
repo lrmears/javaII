@@ -143,12 +143,12 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 			}
 			else if (Character.isDigit(currentEval))
 			{
-				/*
-					else if character is digit (0-9):
-        			value = read all consecutive digits (if any)
-        			top_weight = pop off stack
-        			push (top_weight * value) onto stack
-				 */
+				String digits = "" + currentEval;
+				
+				while ((index + 1) < sequence.length() && Character.isDigit(sequence.charAt(index + 1)))
+				{
+					
+				}
 				int num = Integer.parseInt(sequence); /*Todo: convert consecutive numbers to an int*/
 				int poppedVal = moleculeCounter.pop();
 				int pushMC = poppedVal * num;
