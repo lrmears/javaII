@@ -238,7 +238,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public int compareTo(Molecule other)
 	{
-		// the value used in the comparison is a placeholder
+		// the this.value used in the comparison is a placeholder
 		int compareVal = 1;
 		if (this.value < other.value)
 		{
