@@ -64,7 +64,8 @@ public class MoleculeCollection
 	 */
 	public void sort()
 	{
-		//sort the linked list in atomic weight order, if they are the same they should be at their original spot then
+		//sort the linked list in atomic weight order, if they are the same they 
+		//should be at their original spot then
 	}
 
 	/**
