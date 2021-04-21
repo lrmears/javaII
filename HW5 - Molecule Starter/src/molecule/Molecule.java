@@ -90,27 +90,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	private int parseSequence(String sequence) throws InvalidAtomException, InvalidSequenceException
 	{
-		/*
-		Sudo-code for reference.
-		for each character in sequence:
-    		if character is (:
-        		push -1 onto stack
-    		else if character is atom (C,H,O):
-        		push atomic weight onto stack
-    		else if character is digit (0-9):
-        		value = read all consecutive digits (if any)
-        		top_weight = pop off stack
-        		push (top_weight * value) onto stack
-    		else if character is ):
-        		sum = 0
-        		until popped value is -1:
-            		value = stack.pop()
 
-            		if value is not -1:
-                		add to sum
-            		else (value is -1):
-                		push sum onto stack
-		 */
 		Stack<Integer> moleculeCounter = new Stack<Integer>();
 
 		String seq = "(" + sequence + ")";
