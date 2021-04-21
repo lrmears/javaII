@@ -41,15 +41,15 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	/**
 	 * A global sum variable.
 	 */
-	private int sum;
+	private int sum; //likely don't need
 	/**
 	 * A global value for a given portion variable.
 	 */
-	private int value;
+	private int value; //likely don't need
 	/**
-	 * A global sequence string.
+	 * A global sequence string. 
 	 */
-	private String sequence;
+	private String sequence; //likely don't need
 
 	/**
 	 * Creates a new Molecule made up of the H, C, and O atoms in the configuration specified by sequenceIn.
