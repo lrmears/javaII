@@ -112,7 +112,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 					poppedValue = moleculeCounter.pop();
 					if (poppedValue == -1)
 					{
-						moleculeCounter.push(sum);
+						moleculeCounter.push(stackSum);
 					}
 					else
 					{
