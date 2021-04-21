@@ -39,14 +39,6 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	private int weight;
 	/**
-	 * A global sum variable.
-	 */
-	private int sum; //likely don't need
-	/**
-	 * A global value for a given portion variable.
-	 */
-	private int value; //likely don't need
-	/**
 	 * A global sequence string. 
 	 */
 	private String sequence; //likely don't need
@@ -262,9 +254,16 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	@Override
 	public Object clone()
 	{
-		Molecule cloned = (Molecule) super.clone();
-		cloned.setSequence(this.sequence);
-		return cloned;
+		try
+		{
+			Molecule cloned = (Molecule) super.clone();
+			cloned.setSequence(this.sequence);
+			return cloned;
+		}
+		catch (CloneNotSupportedException a)
+		{
+			throw new RuntimeException();
+		}
 	}
 
 }
