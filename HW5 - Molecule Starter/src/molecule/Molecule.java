@@ -151,7 +151,10 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 					index++;
 					
 				}
-				int num = Integer.parseInt(sequence);
+				int num = Integer.parseInt(digits); 
+				int poppedVal = moleculeCounter.pop();
+				int pushMC = poppedVal * num;
+				moleculeCounter.push(pushMC);
 
 			}
 			else
