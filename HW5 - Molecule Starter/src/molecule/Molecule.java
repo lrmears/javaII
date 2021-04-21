@@ -61,8 +61,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public Molecule(String sequenceIn)
 	{
-		this.sequence = sequenceIn;
-		parseSequence(this.sequence);
+		parseSequence(sequenceIn);
 	}
 
 
