@@ -75,17 +75,15 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	public void setSequence(String sequenceIn)
 	{
-		parseSequence(sequenceIn);
-		// do not need to throw the sequence exception b/c its taken care of in the parseSeuqence method
-		// maybe we do the parse call with this.sequence??
-		// maybe do a try catch loop thing?
+		this.weight = parseSequence(sequenceIn);
+		this.sequence = sequenceIn;
 	}
 
 	/**
 	 * Private method used to parse the given string.
 	 *
 	 * @param sequence - String passed into method to parse.
-	 * @return 0
+	 * @return finalPop - an int with the final Value
 	 */
 	private int parseSequence(String sequence) throws InvalidAtomException, InvalidSequenceException
 	{
