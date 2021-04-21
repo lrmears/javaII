@@ -74,15 +74,15 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	/**
 	 * Private method used to parse the given string.
 	 *
-	 * @param sequence - String passed into method to parse.
 	 * @return finalPop - an int with the final Value
+	 * @param sequenceIn - instanced/local variable
 	 */
-	private int parseSequence(String sequence) throws InvalidAtomException, InvalidSequenceException
+	private int parseSequence(String sequenceIn) throws InvalidAtomException, InvalidSequenceException
 	{
 
 		Stack<Integer> moleculeCounter = new Stack<Integer>();
 
-		String seq = "(" + sequence + ")";
+		String seq = "(" + sequenceIn + ")";
 
 		int index = 0;
 
