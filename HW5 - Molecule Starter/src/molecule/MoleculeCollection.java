@@ -108,9 +108,15 @@ public class MoleculeCollection
 	 */
 	public LinkedList<Molecule> getMoleculeList()
 	{
-		LinkedList copiedList = new LinkedList<Molecule>();
+		LinkedList<Molecule> copiedList = new LinkedList<Molecule>();
+		for (int i = 0; i <= this.molecules.size(); i++)
+		{
+			//			this.molecules.add((Molecule) add.clone());
+			Molecule gottenMol = this.molecules.get(i);
+			copiedList.add((Molecule) gottenMol.clone());
+		}
 		//makes a deep copy of all the molecules in this collection
-		return null;
+		return copiedList;
 	}
 
 	/**
