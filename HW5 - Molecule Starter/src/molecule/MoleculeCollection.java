@@ -45,7 +45,12 @@ public class MoleculeCollection
 	 */
 	public MoleculeCollection(LinkedList<Molecule> moleculeListIn)
 	{
-		//should just be a more complex version of the previous method
+		this.molecules = moleculeListIn;
+		if (moleculeListIn == null)
+		{
+			this.molecules.clear();
+		}
+
 	}
 
 	/**
