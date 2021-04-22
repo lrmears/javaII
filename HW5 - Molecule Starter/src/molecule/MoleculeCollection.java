@@ -91,8 +91,13 @@ public class MoleculeCollection
 	 */
 	public int moleculeWeights()
 	{
-		//sums up all the weights per the previous class i presume
-		return 0;
+		int sum = 0;
+		for (int i = 0; i <= this.molecules.size(); i++)
+		{
+			Molecule gottenMol = this.molecules.get(i);
+			sum += gottenMol.getWeight();
+		}
+		return sum;
 	}
 
 	/**
@@ -103,6 +108,7 @@ public class MoleculeCollection
 	 */
 	public LinkedList<Molecule> getMoleculeList()
 	{
+		LinkedList copiedList = new LinkedList<Molecule>();
 		//makes a deep copy of all the molecules in this collection
 		return null;
 	}
