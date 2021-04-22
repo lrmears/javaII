@@ -32,7 +32,6 @@ public class MoleculeCollection
 	public MoleculeCollection()
 	{
 		this.molecules = new LinkedList<Molecule>();
-		//create a new linked list for the over all collection?
 	}
 
 	/**
