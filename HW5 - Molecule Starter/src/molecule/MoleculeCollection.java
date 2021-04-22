@@ -121,12 +121,13 @@ public class MoleculeCollection
 	 */
 	public void changeSequence(int index, String newSequence) throws InvalidAtomException, InvalidSequenceException
 	{
-		// now new exceptions are thrown they are thrown by methods pre this fucntion is even used.
 		if (index < 0 || index >= this.molecules.size())
 		{
 			return;
 		}
-		//modifies existing molecules, appears to be the hardest one to create, i assume
+
+		Molecule gottenMol = this.molecules.get(index);
+		gottenMol.setSequence(newSequence);
 	}
 
 }
