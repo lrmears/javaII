@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import org.junit.Test;
 
 import molecule.Molecule;
+import molecule.MoleculeCollection;
 import molecule.exceptions.InvalidAtomException;
 import molecule.exceptions.InvalidSequenceException;
 
@@ -199,6 +200,23 @@ public class MoleculeTest
 	{
 		LinkedList<Molecule> a = new LinkedList<Molecule>();
 		assertTrue(a.isEmpty());
+	}
+	@Test
+	public void constructorAddTest()
+	{
+		MoleculeCollection a = new MoleculeCollection();
+		Molecule b = new Molecule("C");	
+		a.addMolecule(0, b);
+		assertEquals(12, a.moleculeWeights());
+	}
+	@Test
+	public void constructorNullTest()
+	{
+		MoleculeCollection a = new MoleculeCollection(null);
+		Molecule b = new Molecule("C");	
+		a.addMolecule(0, b);
+		assertEquals(12, a.moleculeWeights());
+
 	}
 	
 }

@@ -46,7 +46,7 @@ public class MoleculeCollection
 	{
 		if (moleculeListIn == null)
 		{
-			this.molecules.clear();
+			this.molecules = new LinkedList<Molecule>();
 			return;
 		}
 		for (int i = 0; i < this.molecules.size(); i++)
@@ -54,18 +54,6 @@ public class MoleculeCollection
 			Molecule gottenMol = this.molecules.get(i);
 			moleculeListIn.add((Molecule) gottenMol.clone());
 		}
-		/*
-		public LinkedList<Molecule> getMoleculeList() 
-		{
-			LinkedList<Molecule> copiedList = new LinkedList<Molecule>(); already done
-			for (int i = 0; i <= this.molecules.size(); i++)
-			{
-				Molecule gottenMol = this.molecules.get(i);
-				copiedList.add((Molecule) gottenMol.clone());
-			}
-		return copiedList;
-		}
-		 */
 	}
 
 	/**
@@ -112,7 +100,7 @@ public class MoleculeCollection
 	public int moleculeWeights()
 	{
 		int sum = 0;
-		for (int i = 0; i <= this.molecules.size(); i++)
+		for (int i = 0; i < this.molecules.size(); i++)
 		{
 			Molecule gottenMol = this.molecules.get(i);
 			sum += gottenMol.getWeight();
@@ -129,7 +117,7 @@ public class MoleculeCollection
 	public LinkedList<Molecule> getMoleculeList()
 	{
 		LinkedList<Molecule> copiedList = new LinkedList<Molecule>();
-		for (int i = 0; i <= this.molecules.size(); i++)
+		for (int i = 0; i < this.molecules.size(); i++)
 		{
 			Molecule gottenMol = this.molecules.get(i);
 			copiedList.add((Molecule) gottenMol.clone());
