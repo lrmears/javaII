@@ -218,5 +218,22 @@ public class MoleculeTest
 		assertEquals(12, a.moleculeWeights());
 
 	}
+	@Test
+	public void addMoleculeTest()
+	{
+		MoleculeCollection a = new MoleculeCollection();
+		Molecule b = new Molecule("C");	
+		a.addMolecule(0, b);	
+		a.addMolecule(0,null);
+		assertEquals(12, a.moleculeWeights());
+	}
+	@Test
+	public void addMoleculeOutofRangeTest()
+	{
+		MoleculeCollection a = new MoleculeCollection();
+		Molecule b = new Molecule("C");	
+		a.addMolecule(-1, b);	
+		assertEquals(12, a.moleculeWeights());
+	}
 	
 }
