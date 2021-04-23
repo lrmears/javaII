@@ -44,12 +44,27 @@ public class MoleculeCollection
 	 */
 	public MoleculeCollection(LinkedList<Molecule> moleculeListIn)
 	{
-		this.molecules = moleculeListIn;
 		if (moleculeListIn == null)
 		{
 			this.molecules.clear();
 		}
-
+		for (int i = 0; i <= this.molecules.size(); i++)
+		{
+			Molecule gottenMol = this.molecules.get(i);
+			moleculeListIn.add((Molecule) gottenMol.clone());
+		}
+		/*
+		public LinkedList<Molecule> getMoleculeList() 
+		{
+			LinkedList<Molecule> copiedList = new LinkedList<Molecule>(); already done
+			for (int i = 0; i <= this.molecules.size(); i++)
+			{
+				Molecule gottenMol = this.molecules.get(i);
+				copiedList.add((Molecule) gottenMol.clone());
+			}
+		return copiedList;
+		}
+		 */
 	}
 
 	/**
