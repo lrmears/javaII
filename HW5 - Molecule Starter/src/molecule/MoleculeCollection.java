@@ -47,8 +47,9 @@ public class MoleculeCollection
 		if (moleculeListIn == null)
 		{
 			this.molecules.clear();
+			return;
 		}
-		for (int i = 0; i <= this.molecules.size(); i++)
+		for (int i = 0; i < this.molecules.size(); i++)
 		{
 			Molecule gottenMol = this.molecules.get(i);
 			moleculeListIn.add((Molecule) gottenMol.clone());

@@ -157,21 +157,40 @@ public class MoleculeTest
 		assertEquals(-1, b.compareTo(a), DOUBLE_TOLERANCE);
 		
 	}
-	
-	/**@Test
-	public void cloneTest() 
+	@Test
+	public void compareToEqualTest() 
 	{
 		Molecule a = new Molecule("O");
 		assertEquals(16, a.getWeight(), DOUBLE_TOLERANCE);
 		
+		Molecule b = new Molecule("O");
+		assertEquals(16, b.getWeight(), DOUBLE_TOLERANCE);
+		
+		assertEquals(0, b.compareTo(a), DOUBLE_TOLERANCE);
+		
+	}
+	
+	@Test
+	public void cloneTest() 
+	{
+		Molecule a = new Molecule("C");
+		assertEquals(12, a.getWeight(), DOUBLE_TOLERANCE);
+		
 		Object b = a.clone();
 		
-		assertEquals(a, b);
+		assertNotSame(a, b);
 		
 		a.setSequence("CHO");
 		
-		
 		assertNotEquals(a, b);
-	}*/
-	
+		
+	}
+	@Test
+	public void parseDigitTest()
+	{
+		Molecule a = new Molecule("120");
+		
+		System.out.print(a);
+	}
+
 }
