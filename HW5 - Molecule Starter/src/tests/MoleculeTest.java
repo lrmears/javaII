@@ -7,6 +7,8 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.LinkedList;
+
 import org.junit.Test;
 
 import molecule.Molecule;
@@ -188,9 +190,15 @@ public class MoleculeTest
 	@Test
 	public void parseDigitTest()
 	{
-		Molecule a = new Molecule("120");
+		Molecule a = new Molecule("C120");
 		
-		System.out.print(a);
+		assertEquals(1440, a.getWeight(), DOUBLE_TOLERANCE);
 	}
-
+	@Test
+	public void construcotorListTest() 
+	{
+		LinkedList<Molecule> a = new LinkedList<Molecule>();
+		assertTrue(a.isEmpty());
+	}
+	
 }
