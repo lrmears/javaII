@@ -9,14 +9,14 @@ package application;
 /**
  * This small class is responsible for kicking off the main GUI code,
  * which is hidden in an external library.
- * 
- * @author bdorn
  *
+ * @author bdorn
  */
 public class ApplicationMain
 {
 	/**
 	 * Main method which launches application.
+	 *
 	 * @param args Not used.
 	 */
 	public static void main(String[] args)

@@ -25,13 +25,14 @@ public class MoleculeCollection
 	/**
 	 * Creates a linked list type Molecule.
 	 */
-	private LinkedList<Molecule> molecules;
+	private LinkedList<Molecule> molecules = new LinkedList<>();
+
 	/**
 	 * Creates a new MoleculeCollection containing no Molecules yet.
 	 */
 	public MoleculeCollection()
 	{
-		this.molecules = new LinkedList<Molecule>();
+		this.molecules = new LinkedList<>();
 	}
 
 	/**
@@ -49,11 +50,12 @@ public class MoleculeCollection
 			this.molecules = new LinkedList<Molecule>();
 			return;
 		}
-		for (int i = 0; i < this.molecules.size(); i++)
+		for (int i = 0; i < moleculeListIn.size(); i++)
 		{
-			Molecule gottenMol = this.molecules.get(i);
-			moleculeListIn.add((Molecule) gottenMol.clone());
+			Molecule gottenMol = moleculeListIn.get(i);
+			molecules.add((Molecule) gottenMol.clone());
 		}
+
 	}
 
 	/**
@@ -116,7 +118,7 @@ public class MoleculeCollection
 	 */
 	public LinkedList<Molecule> getMoleculeList()
 	{
-		LinkedList<Molecule> copiedList = new LinkedList<Molecule>();
+		LinkedList<Molecule> copiedList = new LinkedList<>();
 		for (int i = 0; i < this.molecules.size(); i++)
 		{
 			Molecule gottenMol = this.molecules.get(i);
