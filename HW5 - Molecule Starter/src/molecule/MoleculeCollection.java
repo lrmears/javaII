@@ -126,6 +126,7 @@ public class MoleculeCollection
 		int leftIndex = left;
 		int rightIndex = right;
 		
+		
 		LinkedList<Molecule> combined = new LinkedList<Molecule>();
 		int combinedIndex = left;
 		// As long as both subarray pieces have data still in them, 
