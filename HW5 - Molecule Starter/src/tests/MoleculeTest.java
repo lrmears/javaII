@@ -217,4 +217,29 @@ public class MoleculeTest
 		a.addMolecule(0, b);
 		assertEquals(12, a.moleculeWeights());
 	}
+	@Test
+	public void sortTest()
+	{
+		MoleculeCollection molecules = new MoleculeCollection();
+		Molecule b = new Molecule("O");
+		Molecule c = new Molecule("C");
+		Molecule d = new Molecule("H");
+		molecules.addMolecule(0, b);
+		molecules.addMolecule(1, c);
+		molecules.addMolecule(2, d);
+		
+		molecules.sort();
+		
+		MoleculeCollection moleculesTwo = new MoleculeCollection();
+		Molecule e = new Molecule("H");
+		Molecule f = new Molecule("C");
+		Molecule g = new Molecule("O");
+		moleculesTwo.addMolecule(0, e);
+		moleculesTwo.addMolecule(1, f);
+		moleculesTwo.addMolecule(2, g);
+		
+		
+		assertEquals(moleculesTwo.getMoleculeList(), molecules.getMoleculeList());
+		
+	}
 }
