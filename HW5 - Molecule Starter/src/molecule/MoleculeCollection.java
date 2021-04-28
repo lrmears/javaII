@@ -105,12 +105,11 @@ public class MoleculeCollection
 		if ((right - left) > 1)	
 		{
 			int middle1 = (left + right) / 2;
-			int middle2 = middle1 + 1;
 			
 			sortHelper(moleculecollection2, left, middle1);
-			sortHelper(moleculecollection2, middle2, right);
+			sortHelper(moleculecollection2, middle1 + 1, right);
 
-			merge(moleculecollection2, left, middle1, middle2, right);
+			merge(moleculecollection2, left, middle1, right);
 		}
 	}
 	/**
@@ -121,7 +120,7 @@ public class MoleculeCollection
 	 * @param middle2 Lower index of second sub-array.
 	 * @param right Upper index of second sub-array.
 	 */
-	public void merge(LinkedList<Molecule> moleculecollection2, int left, int middle1, int middle2, int right)
+	public void merge(LinkedList<Molecule> moleculecollection2, int left, int middle1,  int right)
 	{
 		int leftIndex = left;
 		int rightIndex = right;
@@ -148,7 +147,7 @@ public class MoleculeCollection
 		}
 		// If the left sub-array has run out of values, we need
 		// to go through emptying the remainder from the right
-		if (leftIndex == middle2)
+		if (leftIndex == middle1)
 		{
 			while (rightIndex <= right)
 			{
