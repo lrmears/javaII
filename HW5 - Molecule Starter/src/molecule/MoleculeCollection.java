@@ -8,6 +8,7 @@ package molecule;
 
 import java.util.LinkedList;
 
+
 import molecule.exceptions.InvalidAtomException;
 import molecule.exceptions.InvalidSequenceException;
 
@@ -86,7 +87,7 @@ public class MoleculeCollection
 	/**
 	 * Reorders the MoleculeCollection based on atomic weight.
 	 * Molecules with the same weights should appear in their original order of insertion
-	 *  relative to one another (ie., sort() is a stable sorting algorithm).
+	 * relative to one another (ie., sort() is a stable sorting algorithm).
 	 */
 	
 	public void sort()
@@ -134,7 +135,7 @@ public class MoleculeCollection
 		{
 			// Is the first item of the left subarray smalleb r?
 			if (this.molecules.get(leftIndex).getWeight() 
-					<= this.molecules.get(rightIndex).getWeight())
+					< this.molecules.get(rightIndex).getWeight())
 			{
 				combined.add(combinedIndex++, this.molecules.get(leftIndex++));
 			}
