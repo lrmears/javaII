@@ -136,6 +136,7 @@ public class MoleculeCollection
 		{
 			combinedRight.add(this.molecules.get(middle + 1 + j));
 		}
+		this.molecules.clear();
 		System.out.print(combinedLeft);
 		System.out.print(combinedRight);
 		int leftIndexSub = 0, rightIndexSub = 0;
@@ -145,12 +146,12 @@ public class MoleculeCollection
 			if (combinedLeft.get(leftIndexSub).getWeight() 
 					< combinedRight.get(rightIndexSub).getWeight())
 			{
-				combinedLeft.add(combinedIndex++, combinedLeft.get(leftIndexSub));
+				this.molecules.add(combinedIndex++, combinedLeft.get(leftIndexSub));
 				leftIndexSub++;
 			}
 			else 
 			{
-				combinedRight.add(combinedIndex, combinedRight.get(rightIndexSub));
+				this.molecules.add(combinedIndex++, combinedRight.get(rightIndexSub));
 				rightIndexSub++;
 			}
 			combinedIndex++;
