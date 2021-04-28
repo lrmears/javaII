@@ -136,6 +136,8 @@ public class MoleculeCollection
 		{
 			combinedRight.add(this.molecules.get(middle + 1 + j));
 		}
+		System.out.print(combinedLeft);
+		System.out.print(combinedRight);
 		int leftIndexSub = 0, rightIndexSub = 0;
 		int combinedIndex = 1;
 		while (leftIndexSub < leftIndex && rightIndexSub < rightIndex)
