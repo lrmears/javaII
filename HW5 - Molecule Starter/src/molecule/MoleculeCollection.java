@@ -104,7 +104,7 @@ public class MoleculeCollection
 	{
 		if ((right - left) > 1)	
 		{
-			int middle = left + (right - 1) / 2;
+			int middle = left + (right - left) / 2;
 			
 			sortHelper(moleculecollection2, left, middle);
 			sortHelper(moleculecollection2, middle + 1, right);
