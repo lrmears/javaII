@@ -103,7 +103,10 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 					int poppedValue = 0, stackSum = 0;
 					while (poppedValue != -1)
 					{
-						poppedValue = moleculeCounter.pop();
+						if (moleculeCounter.empty())
+						{
+							throw new InvalidSequenceException();
+						}
 						if (poppedValue == -1)
 						{
 							moleculeCounter.push(stackSum);
@@ -129,6 +132,7 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 		
 			if (!moleculeCounter.empty())
 			{
+				System.out.print(moleculeCounter.pop());
 				throw new InvalidSequenceException();
 			}
 		
