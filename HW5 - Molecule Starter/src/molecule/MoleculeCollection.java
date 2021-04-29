@@ -96,30 +96,30 @@ public class MoleculeCollection
 	}
 	/**
 	 * Recursive Helper for sort.
-	 * @param moleculecollection2 the moleculeCollection being passed.
+	 * @param molecules2 the moleculeCollection being passed.
 	 * @param left Lower Index of the subArray
 	 * @param right Upper Index of the subArray
 	 */
-	public void sortHelper(LinkedList<Molecule> moleculecollection2, int left, int right)
+	public void sortHelper(LinkedList<Molecule> molecules2, int left, int right)
 	{
 		if (left < right)	
 		{
 			int middle = left + (right - left) / 2;
 			
-			sortHelper(moleculecollection2, left, middle);
-			sortHelper(moleculecollection2, middle + 1, right);
+			sortHelper(molecules2, left, middle);
+			sortHelper(molecules2, middle + 1, right);
 
-			merge(moleculecollection2, left, middle, right);
+			merge(molecules2, left, middle, right);
 		}
 	}
 	/**
 	 * Helper method for sort, merges the 2 subarrays.
-	 * @param moleculecollection2 the moleculeCollection being passed.s
+	 * @param molecules2 the moleculeCollection being passed.s
 	 * @param left Lower index of first sub-array.
 	 * @param middle Upper index of first sub-array.
 	 * @param right Upper index of second sub-array.
 	 */
-	public void merge(LinkedList<Molecule> moleculecollection2, int left, int middle,  int right)
+	public void merge(LinkedList<Molecule> molecules2, int left, int middle,  int right)
 	{
 		int leftIndex = middle - left + 1;
 		int rightIndex = right - middle;
@@ -136,8 +136,6 @@ public class MoleculeCollection
 		{
 			combinedRight.add(this.molecules.get(middle + 1 + j));
 		}
-		//System.out.print(combinedLeft);
-		//System.out.print(combinedRight);
 		int leftIndexSub = 0, rightIndexSub = 0;
 		int combinedIndex = left;
 		while (leftIndexSub < leftIndex && rightIndexSub < rightIndex)
@@ -165,46 +163,6 @@ public class MoleculeCollection
 			this.molecules.set(combinedIndex++, combinedRight.get(rightIndexSub));
 			rightIndexSub++;
 		}
-		// As long as both subarray pieces have data still in them, 
-				// we need to keep picking the next smallest from the start
-				// of each and putting it into combined
-		/*while (leftIndex <= middle && rightIndex <= right)
-		{
-			// Is the first item of the left subarray smalleb r?
-			if (this.molecules.get(leftIndex).getWeight() 
-					< this.molecules.get(rightIndex).getWeight())
-			{
-				combined.add(combinedIndex++, this.molecules.get(leftIndex++));
-			}
-			// Or is the first item in the right one smaller?
-			else 
-			{
-				combined.add(combinedIndex++, this.molecules.get(rightIndex++));
-			}
-		}
-		// If the left sub-array has run out of values, we need
-		// to go through emptying the remainder from the right
-		if (leftIndex == middle)
-		{
-			while (rightIndex <= right)
-			{
-				combined.add(combinedIndex++, this.molecules.get(rightIndex++));
-				//combined[combinedIndex++] = data[rightIndex++];
-			}
-		}
-		else
-		{
-			while (leftIndex <= middle)
-			{
-				combined.add(combinedIndex++, this.molecules.get(leftIndex++));
-			}
-		}
-		//finally copy array
-		this.molecules.clear();
-		for (int i = left; i <= right; i++)
-		{
-			this.molecules.add(combined.get(i));	
-		} */
 	}
 	/**
 	 * Sums the weights of all Molecules in the MoleculeCollection.

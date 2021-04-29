@@ -229,10 +229,6 @@ public class MoleculeTest
 		molecules.addMolecule(2, d);
 		
 		molecules.sort();
-		//y = molecules.getMoleculeList()
-		//String z = "H                      : 1, C                      : 12, O                      : 16";
-		//assertEquals(molecules, molecules.getMoleculeList());
-
 		
 		MoleculeCollection moleculesTwo = new MoleculeCollection();
 		Molecule e = new Molecule("H");
@@ -241,9 +237,14 @@ public class MoleculeTest
 		moleculesTwo.addMolecule(0, e);
 		moleculesTwo.addMolecule(1, f);
 		moleculesTwo.addMolecule(2, g);
-		
-		
-		assertEquals(moleculesTwo.getMoleculeList(), molecules.getMoleculeList());
+
+		LinkedList<Molecule> mList1 = molecules.getMoleculeList();
+		LinkedList<Molecule> mList2 = moleculesTwo.getMoleculeList();
+		assertEquals(mList1.size(), mList2.size());
+		for (int i = 0; i < mList1.size(); ++i)
+		{
+			assertEquals(0, mList1.get(i).compareTo(mList2.get(i)));
+		}
 		
 	}
 }

@@ -6,6 +6,7 @@
 
 package molecule;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 import molecule.exceptions.InvalidAtomException;
@@ -81,69 +82,95 @@ public class Molecule implements Comparable<Molecule>, Cloneable
 	 */
 	private int parseSequence(String sequenceIn) throws InvalidAtomException, InvalidSequenceException
 	{
-
-		Stack<Integer> moleculeCounter = new Stack<Integer>();
-
-		String seq = "(" + sequenceIn + ")";
-
-		int index = 0;
-
-		while (index < seq.length())
+		try
 		{
-			char currentEval = seq.charAt(index);
-			if (currentEval == '(')
-			{
-				moleculeCounter.push(-1);
-			}
-			else if (currentEval == ')')
-			{
-				int poppedValue = 0, stackSum = 0;
-				while (poppedValue != -1)
-				{
-					poppedValue = moleculeCounter.pop();
-					if (poppedValue == -1)
-					{
-						moleculeCounter.push(stackSum);
-					}
-					else
-					{
-						stackSum += poppedValue;
-					}
-				}
+			
+			Stack<Integer> moleculeCounter = new Stack<Integer>();
 
-			}
-			else if (Character.isDigit(currentEval))
+			String seq = "(" + sequenceIn + ")";
+
+			int index = 0;
+
+			while (index < seq.length())
 			{
-				String digits = "" + currentEval;
+				char currentEval = seq.charAt(index);
+				if (currentEval == '(')
+				{
+					moleculeCounter.push(-1);
+				}
+				else if (currentEval == ')')
+				{
+					int poppedValue = 0, stackSum = 0;
+					while (poppedValue != -1)
+					{
+						poppedValue = moleculeCounter.pop();
+						if (poppedValue == -1)
+						{
+							moleculeCounter.push(stackSum);
+						}
+						else
+						{
+							stackSum += poppedValue;
+						}
+					}
 				
-				while ((index + 1) < seq.length() && Character.isDigit(seq.charAt(index + 1)))
-				{
-					digits += seq.charAt(index + 1);
-					index++;
-					
 				}
-				int num = Integer.parseInt(digits); 
-				int poppedVal = moleculeCounter.pop();
-				int pushMC = poppedVal * num;
-				moleculeCounter.push(pushMC);
-
+				else if (Character.isDigit(currentEval))
+				{
+					index = parseMoleculeMultiplier(seq, index, moleculeCounter);
+				}
+				else
+				{
+					moleculeCounter.push(Molecule.atomWeight(currentEval));
+				}
+				index++;
 			}
-			else
-			{
-				moleculeCounter.push(Molecule.atomWeight(currentEval));
-			}
-			index++;
-		}
-		int finalPop = moleculeCounter.pop();
+			int finalPop = moleculeCounter.pop();
 		
-		if (!moleculeCounter.empty())
+			if (!moleculeCounter.empty())
+			{
+				throw new InvalidSequenceException();
+			}
+		
+			return finalPop;
+		}
+		catch (EmptyStackException e)
 		{
 			throw new InvalidSequenceException();
 		}
-		
-		return finalPop;
 
 	}
+	/**
+	 * Parses out the digits to lower on the complexity of a single method.
+	 * @param i current local
+	 * @param moleculeCounter a molecule counter
+	 * @param seq sequence
+	 * @return the current value
+	 */
+	private int parseMoleculeMultiplier(String seq, int i, Stack<Integer> moleculeCounter)
+	{
+		String digits = "";
+		int index = i;
+	    
+		while (index < seq.length())
+		{
+			if (!Character.isDigit(seq.charAt(index)))
+			{ 
+				break; 
+			}
+	        
+			digits += seq.charAt(index);
+			index++;
+		}
+	    
+		int num = Integer.parseInt(digits);
+		int poppedVal = moleculeCounter.pop();
+		int pushMC = poppedVal * num;
+		moleculeCounter.push(pushMC);
+	    
+		return index;
+	}
+	
 
 	/**
 	 * Retrieves a String containing this Molecule's sequence of atoms.
