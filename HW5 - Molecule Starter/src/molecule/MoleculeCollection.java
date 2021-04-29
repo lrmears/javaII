@@ -102,7 +102,7 @@ public class MoleculeCollection
 	 */
 	public void sortHelper(LinkedList<Molecule> moleculecollection2, int left, int right)
 	{
-		if ((right - left) > 1)	
+		if (left < right)	
 		{
 			int middle = left + (right - left) / 2;
 			
@@ -136,34 +136,33 @@ public class MoleculeCollection
 		{
 			combinedRight.add(this.molecules.get(middle + 1 + j));
 		}
-		this.molecules.clear();
 		//System.out.print(combinedLeft);
 		//System.out.print(combinedRight);
 		int leftIndexSub = 0, rightIndexSub = 0;
-		int combinedIndex = 0;
+		int combinedIndex = left;
 		while (leftIndexSub < leftIndex && rightIndexSub < rightIndex)
 		{
 			if (combinedLeft.get(leftIndexSub).getWeight() 
 					< combinedRight.get(rightIndexSub).getWeight())
 			{
-				this.molecules.add(combinedLeft.get(leftIndexSub));
+				this.molecules.set(combinedIndex, combinedLeft.get(leftIndexSub));
 				leftIndexSub++;
 			}
 			else 
 			{
-				this.molecules.add(combinedRight.get(rightIndexSub));
+				this.molecules.set(combinedIndex, combinedRight.get(rightIndexSub));
 				rightIndexSub++;
 			}
 			combinedIndex++;
 		}
 		while (leftIndexSub < leftIndex)
 		{
-			this.molecules.add(combinedIndex++, combinedLeft.get(leftIndexSub));
+			this.molecules.set(combinedIndex++, combinedLeft.get(leftIndexSub));
 			leftIndexSub++;
 		}
 		while (rightIndexSub < rightIndex)
 		{
-			this.molecules.add(combinedIndex++, combinedRight.get(rightIndexSub));
+			this.molecules.set(combinedIndex++, combinedRight.get(rightIndexSub));
 			rightIndexSub++;
 		}
 		// As long as both subarray pieces have data still in them, 

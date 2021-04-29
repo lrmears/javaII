@@ -229,6 +229,10 @@ public class MoleculeTest
 		molecules.addMolecule(2, d);
 		
 		molecules.sort();
+		//y = molecules.getMoleculeList()
+		//String z = "H                      : 1, C                      : 12, O                      : 16";
+		//assertEquals(molecules, molecules.getMoleculeList());
+
 		
 		MoleculeCollection moleculesTwo = new MoleculeCollection();
 		Molecule e = new Molecule("H");
